@@ -1,0 +1,51 @@
+package com.michiget.controller;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.michiget.beans.UserInfo;
+
+/**
+ * Handles requests for the application home page.
+ */
+@Controller
+public interface MichigetController {
+
+	@RequestMapping("/")
+	public ModelAndView home() throws Exception;
+
+	@RequestMapping("/join")
+	public ModelAndView joinAction() throws Exception;
+
+	@RequestMapping("/logout")
+	public ModelAndView logout() throws Exception;
+
+	// (value="/member", method=RequestMethod.GET)
+	@RequestMapping(value = "/member", method = RequestMethod.POST)
+	public ModelAndView memberAction(@ModelAttribute UserInfo userInfo,
+			HttpServletRequest request) throws Exception;
+
+	@RequestMapping("/list")
+	public ModelAndView listAction() throws Exception;
+
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public ModelAndView loginAction(@RequestParam(value = "id") String id,
+			@RequestParam(value = "pass") String pass,
+			HttpServletRequest request) throws Exception;
+
+	@RequestMapping("/board")
+	public ModelAndView boardAction() throws Exception;
+
+}
