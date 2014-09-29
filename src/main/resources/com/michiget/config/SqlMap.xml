@@ -28,7 +28,7 @@
 
 	</insert>
 	
-	<select id="getId" resultClass="userInfo" parameterClass="str">
+	<select id="getLoginId" resultClass="userInfo" parameterClass="str">
 	  	    select ID,PASS,NICK from MEMBER2 where ID = #id#
 	</select>
 

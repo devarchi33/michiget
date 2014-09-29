@@ -3,6 +3,7 @@ package com.michiget.service;
 import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -82,34 +83,43 @@ public class MichigetService implements MichigetController {
 		int check_return = 0;
 		System.out.println(id);
 		System.out.println(pass);
-		UserInfo temp = michigetDao.getId(id);
+		
+		UserInfo userInfo = michigetDao.getLoginId(id);
 
-		logger.debug("db Id = " + temp.getId());
-		logger.debug("db Pass = " + temp.getPass());
+		HttpSession session = request.getSession();
+		session.setAttribute("userInfo", userInfo);
+
+		logger.debug("db Id = " + userInfo.getId());
+		logger.debug("db Pass = " + userInfo.getPass());
 
 		logger.debug("입력한 Id = " + id);
 		logger.debug("입력한 Pass = " + pass);
 
-		// logger.debug("temp = " + temp);
-		if (temp.getId() != null || temp.getId() != "") {
-			if (!(temp.getPass().equals(pass))) {
+		// logger.debug("userInfo = " + userInfo);
+		if (userInfo.getId() != null || userInfo.getId() != "") {
+			if (!(userInfo.getPass().equals(pass))) {
+
+
 				ModelAndView mav = new ModelAndView("home");
 				check_return = 2;
 				mav.addObject("check", check_return);
+
 				return mav;
 			}
-		} else if (temp == null) {
-			ModelAndView mav = new ModelAndView("home");
-			check_return = 1;
-			mav.addObject("check", check_return);
-			return mav;
+		} else if (userInfo.getPass() != null || userInfo.getPass() != "") {
+			if (userInfo.getId() == null) {
+				ModelAndView mav = new ModelAndView("home");
+				check_return = 1;
+				mav.addObject("check", check_return);
+				return mav;
+			}
 		}
 
-		logger.debug("db Name = " + temp.getNick());
+		logger.debug("db Name = " + userInfo.getNick());
 		ModelAndView mav = new ModelAndView("home");
 		check_return = 0;
 		mav.addObject("check", check_return);
-		mav.addObject("nick", temp.getNick());
+		mav.addObject("nick", userInfo.getNick());
 		return mav;
 	}
 

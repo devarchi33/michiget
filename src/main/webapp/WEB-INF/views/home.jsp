@@ -1,7 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.michiget.beans.UserInfo"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<%@ page session="true"%>
+<%
+	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+	if (userInfo != null)
+		System.out.println("Session ok!!");
+	else
+		System.out.println("Session fail!!");
+%>
 <html>
 <head>
 <title>Spring-Board</title>
@@ -39,6 +47,7 @@
 </script>
 </head>
 <body>
+
 	<c:if test="${check == 1 || check == 2}">
 		<script>
 			logCheck("${check}");
@@ -46,22 +55,25 @@
 	</c:if>
 	<c:choose>
 		<c:when test="${check == 0 }">
+
 			<form action="/michiget/logout" method="get"
 				onsubmit="return logout();">
 				<table>
 
 					<tr>
-						<td>${nick }님, 환영합니다.</td>
+						<td><%=userInfo.getNick()%>님, 환영합니다.</td>
 					</tr>
 
 					<tr>
-						<input type="submit" value="로그아웃" />
+						<td><input type="submit" value="로그아웃" /></td>
 					</tr>
 
 				</table>
 			</form>
+
 		</c:when>
 		<c:otherwise>
+			
 			<form action="/michiget/login" method="POST"
 				onsubmit="return formCheck();">
 				<table>
