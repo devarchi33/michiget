@@ -14,10 +14,18 @@
 <head>
 <title>Spring-Board</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
- 
+<link rel="stylesheet"
+	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
+<style type="text/css">
+button {
+	width: 70px;
+	height: 30px;
+}
+</style>
+
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+<script
+	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 <script>
 	function formCheck() {
 		var id = document.forms[0].id;
@@ -78,28 +86,49 @@
 
 		</c:when>
 		<c:otherwise>
-			
+
 			<form action="/michiget/login" method="POST"
 				onsubmit="return formCheck();">
 				<table>
 
 					<tr>
 						<th>아이디</th>
-						<td><input type="text" name="id" size="20" /></td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">@</span> <input
+									class="form-control" placeholder="Username" type="text"
+									name="id" size="20">
+							</div>
+						</td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
-						<td><input type="password" name="pass" size="20" /></td>
+						<td>
+							<div class="input-group">
+								<span class="input-group-addon">@</span> <input
+									class="form-control" placeholder="Password" size="20"
+									name="pass" type="password">
+							</div>
+						</td>
 					</tr>
 
-				</table>
-				<input type="submit" value="로그인" /><br>
 
+
+
+
+				</table>
+				<p><button class="btn btn-primary btn-xs" type="submit" value="로그인" />로그인</button></p>
 			</form>
 		</c:otherwise>
 	</c:choose>
-	<a href="/michiget/join">회원가입</a>
-	<a href="/michiget/list">회원리스트</a>
-	<a href="/michiget/board">게시글리스트</a>
+	<p>
+		<a href="/michiget/join">회원가입</a>
+	</p>
+	<p>
+		<a href="/michiget/list">회원리스트</a>
+	</p>
+	<p>
+		<a href="/michiget/board">게시글리스트</a>
+	</p>
 </body>
 </html>
