@@ -7,6 +7,23 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+ 
+ <!-- 
+ <filter>
+	<filter-name>jkeeperFilter</filter-name>
+	<filter-class>com.iruen.tech.jkeeper.servlet.ServletFilter</filter-class>
+	<init-param>
+		<param-name>LoginIdVariable</param-name>
+		<param-value>userId</param-value>
+	</init-param>
+</filter>
+
+<filter-mapping>
+	<filter-name>jkeeperFilter</filter-name>
+	<url-pattern>/*</url-pattern>
+</filter-mapping>
+ -->
+ 
   <filter>
     <filter-name>encodingFilter</filter-name>
     <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
