@@ -90,7 +90,7 @@ public class MichigetService implements MichigetController {
 		
 		michigetDao.insertBoard(board);
 		
-		return new ModelAndView("board");
+		return new ModelAndView("redirect:board");
 	}
 
 	@Override
