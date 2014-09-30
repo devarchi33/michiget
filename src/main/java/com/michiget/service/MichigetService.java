@@ -1,6 +1,9 @@
 package com.michiget.service;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -43,6 +46,13 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
+	public ModelAndView writeAction() throws Exception {
+		logger.info("글쓰기 페이지");
+		
+		return new ModelAndView("write");
+	}
+
+	@Override
 	public ModelAndView logout() throws Exception {
 		logger.info("로그아웃 페이지");
 
@@ -50,7 +60,7 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView memberAction(@ModelAttribute UserInfo userInfo,
+	public ModelAndView memberInsertAction(@ModelAttribute UserInfo userInfo,
 			HttpServletRequest request) throws Exception {
 		logger.info("회원가입DB접속 페이지");
 		request.setCharacterEncoding("UTF-8");
@@ -62,6 +72,25 @@ public class MichigetService implements MichigetController {
 		michigetDao.insertMember(userInfo);
 
 		return new ModelAndView("redirect:");
+	}
+	
+	@Override
+	public ModelAndView boardInsertAction(Board board,
+			HttpServletRequest request) throws Exception {
+		logger.info("게시판 글쓰기 페이지");
+		request.setCharacterEncoding("UTF-8");
+		
+		System.out.println("MichigetService : "+board.getTitle());
+		System.out.println("MichigetService : "+board.getWriter());
+		
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss", Locale.KOREA );
+		Date currentTime = new Date ( );
+		String mTime = mSimpleDateFormat.format ( currentTime );
+		board.setRegdate(mTime);
+		
+		michigetDao.insertBoard(board);
+		
+		return new ModelAndView("board");
 	}
 
 	@Override
@@ -134,4 +163,5 @@ public class MichigetService implements MichigetController {
 
 		return mav;
 	}
+
 }

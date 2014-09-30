@@ -11,25 +11,33 @@
 	<typeAlias alias="board" type="com.michiget.beans.Board" />
 
 	<select id="getMemberList" resultClass="userInfo">
-	  	    select * from MEMBER2 order by IDX asc
+		select * from MEMBER order by IDX asc
 	</select>
-	
+
 	<select id="getBoardList" resultClass="board">
-	  	    select * from board4
+		select * from michiget.BOARD2 order by michiget.board2."idx"
 	</select>
-	
+
 	<insert id="insertMember" parameterClass="userInfo"> 
 	<![CDATA[
-		INSERT INTO MEMBER2
+		INSERT INTO MEMBER
 			 (IDX, ID, PASS, NICK, EMAIL1, EMAIL2, GENDER, REGDATE, REGIP)
 		 VALUES 
 			 (member_seq.nextval, #id#, #pass#, #nick#, #email1#, #email2#, #gender#, sysdate, #regIp#)
 	]]>
-
 	</insert>
-	
+
+	<insert id="insertBoard" parameterClass="board"> 
+	<![CDATA[
+		INSERT INTO michiget.board2
+			 (michiget.board2."idx", michiget.board2."title", michiget.board2."writer", michiget.board2."regdate", michiget.board2."count", michiget.board2."content")
+		 VALUES 
+			 (member_seq.nextval, #title#, #writer#, #regdate#, 1, #content#)
+	]]>
+	</insert>
+
 	<select id="getLoginId" resultClass="userInfo" parameterClass="str">
-	  	    select ID,PASS,NICK from MEMBER2 where ID = #id#
+		select ID,PASS,NICK from MEMBER where ID = #id#
 	</select>
 
 </sqlMap>

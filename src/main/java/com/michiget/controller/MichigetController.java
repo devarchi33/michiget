@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.michiget.beans.Board;
 import com.michiget.beans.UserInfo;
 
 /**
@@ -23,12 +24,19 @@ public interface MichigetController {
 	@RequestMapping("/join")
 	public ModelAndView joinAction() throws Exception;
 
+	@RequestMapping("/write")
+	public ModelAndView writeAction() throws Exception;
+
 	@RequestMapping("/logout")
 	public ModelAndView logout() throws Exception;
 
 	// (value="/member", method=RequestMethod.GET)
 	@RequestMapping(value = "/member", method = RequestMethod.POST)
-	public ModelAndView memberAction(@ModelAttribute UserInfo userInfo,
+	public ModelAndView memberInsertAction(@ModelAttribute UserInfo userInfo,
+			HttpServletRequest request) throws Exception;
+
+	@RequestMapping(value = "/board", method = RequestMethod.POST)
+	public ModelAndView boardInsertAction(@ModelAttribute Board board,
 			HttpServletRequest request) throws Exception;
 
 	@RequestMapping("/list")

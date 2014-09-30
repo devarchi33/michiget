@@ -92,24 +92,22 @@ button {
 				<table>
 
 					<tr>
-						<th>아이디</th>
-						<td>
+						<th>
 							<div class="input-group">
 								<span class="input-group-addon">@</span> <input
 									class="form-control" placeholder="Username" type="text"
 									name="id" size="20">
 							</div>
-						</td>
+						</th>
 					</tr>
 					<tr>
-						<th>비밀번호</th>
-						<td>
+						<th>
 							<div class="input-group">
 								<span class="input-group-addon">@</span> <input
 									class="form-control" placeholder="Password" size="20"
 									name="pass" type="password">
 							</div>
-						</td>
+						</th>
 					</tr>
 
 
