@@ -6,9 +6,9 @@
 <%
 	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
 	if (userInfo != null)
-		System.out.println("Session ok!!");
+		System.out.println("home.jsp : Session ok!!");
 	else
-		System.out.println("Session fail!!");
+		System.out.println("home.jsp : Session invalidated!!");
 %>
 <html>
 <head>

@@ -22,7 +22,8 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.michiget.service">
-		<level value="info" />
+		<level value="debug" />
+		<appender-ref ref="stdout" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->

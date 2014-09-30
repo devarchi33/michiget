@@ -55,8 +55,8 @@ public class MichigetService implements MichigetController {
 		logger.info("회원가입DB접속 페이지");
 		request.setCharacterEncoding("UTF-8");
 
-		System.out.println(userInfo.getId());
-		System.out.println(userInfo.getNick());
+		System.out.println("MichigetService : "+userInfo.getId());
+		System.out.println("MichigetService : "+userInfo.getNick());
 
 		userInfo.setRegIp(request.getRemoteAddr());
 		michigetDao.insertMember(userInfo);
@@ -81,8 +81,8 @@ public class MichigetService implements MichigetController {
 			HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
 		int check_return = 0;
-		System.out.println(id);
-		System.out.println(pass);
+		System.out.println("MichigetService.java --- id : "+ id);
+		System.out.println("MichigetService.java --- pass : "+pass);
 		
 		UserInfo userInfo = michigetDao.getLoginId(id);
 
