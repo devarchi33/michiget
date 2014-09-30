@@ -84,5 +84,7 @@
 		<input type="submit" value="가입하기" />&nbsp;&nbsp; <input type="reset"
 			value="다시하기" />
 	</form>
+	
+	<p><a href="/michiget/logout">홈</a></p>
 </body>
 </html>

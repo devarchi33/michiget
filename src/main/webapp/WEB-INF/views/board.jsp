@@ -34,7 +34,8 @@
 		</c:forEach>
 	</table>
 	
-	<p><a href="/michiget/list">회원리스트</a></p>
 	<p><a href="/michiget/write">글쓰기</a></p>
+	<p><a href="/michiget/list">회원리스트</a></p>
+	<p><a href="/michiget/logout">로그아웃</a></p>
 </body>
 </html>

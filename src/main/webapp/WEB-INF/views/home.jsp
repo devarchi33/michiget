@@ -83,7 +83,16 @@ button {
 
 				</table>
 			</form>
-
+			<p>
+				<a href="/michiget/join">회원가입</a>
+			</p>
+			<p>
+				<a href="/michiget/list">회원리스트</a>
+			</p>
+			<p>
+				<a href="/michiget/board">게시글리스트</a>
+			</p>
+			
 		</c:when>
 		<c:otherwise>
 
@@ -110,23 +119,18 @@ button {
 						</th>
 					</tr>
 
-
-
-
-
 				</table>
-				<p><button class="btn btn-primary btn-xs" type="submit" value="로그인" />로그인</button></p>
+				<p>
+					<button class="btn btn-primary btn-xs" type="submit" value="로그인">
+						로그인</button>
+				</p>
 			</form>
+
+			<p>
+				<a href="/michiget/join">회원가입</a>
+			</p>
 		</c:otherwise>
 	</c:choose>
-	<p>
-		<a href="/michiget/join">회원가입</a>
-	</p>
-	<p>
-		<a href="/michiget/list">회원리스트</a>
-	</p>
-	<p>
-		<a href="/michiget/board">게시글리스트</a>
-	</p>
+
 </body>
 </html>
