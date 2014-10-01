@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.michiget.beans.UserInfo"%>
+<%@ page session="true"%>
+<%
+	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+	if (userInfo != null)
+		System.out.println("home.jsp : Session ok!! now Board-write");
+	else
+		System.out.println("home.jsp : Session invalidated!!");
+%>	
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -40,6 +49,8 @@
 </script>
 </head>
 <body>
+	<p><%=userInfo.getNick()%>님으로 로그인 하셨습니다.
+	</p>
 	<form action="/michiget/board" name="boardWrite" method="post"
 		onsubmit="return formCheck();">
 		<p align="center">

@@ -48,7 +48,7 @@ public class MichigetService implements MichigetController {
 	@Override
 	public ModelAndView writeAction() throws Exception {
 		logger.info("글쓰기 페이지");
-		
+
 		return new ModelAndView("write");
 	}
 
@@ -65,31 +65,32 @@ public class MichigetService implements MichigetController {
 		logger.info("회원가입DB접속 페이지");
 		request.setCharacterEncoding("UTF-8");
 
-		System.out.println("MichigetService : "+userInfo.getId());
-		System.out.println("MichigetService : "+userInfo.getNick());
+		System.out.println("MichigetService : " + userInfo.getId());
+		System.out.println("MichigetService : " + userInfo.getNick());
 
 		userInfo.setRegIp(request.getRemoteAddr());
 		michigetDao.insertMember(userInfo);
 
 		return new ModelAndView("redirect:");
 	}
-	
+
 	@Override
 	public ModelAndView boardInsertAction(Board board,
 			HttpServletRequest request) throws Exception {
 		logger.info("게시판 글쓰기 페이지");
 		request.setCharacterEncoding("UTF-8");
-		
-		System.out.println("MichigetService : "+board.getTitle());
-		System.out.println("MichigetService : "+board.getWriter());
-		
-		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat ( "yyyy.MM.dd HH:mm:ss", Locale.KOREA );
-		Date currentTime = new Date ( );
-		String mTime = mSimpleDateFormat.format ( currentTime );
+
+		System.out.println("MichigetService : " + board.getTitle());
+		System.out.println("MichigetService : " + board.getWriter());
+
+		SimpleDateFormat mSimpleDateFormat = new SimpleDateFormat(
+				"yyyy.MM.dd HH:mm:ss", Locale.KOREA);
+		Date currentTime = new Date();
+		String mTime = mSimpleDateFormat.format(currentTime);
 		board.setRegdate(mTime);
-		
+
 		michigetDao.insertBoard(board);
-		
+
 		return new ModelAndView("redirect:board");
 	}
 
@@ -109,10 +110,11 @@ public class MichigetService implements MichigetController {
 			@RequestParam(value = "pass") String pass,
 			HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		int check_return = 0;
-		System.out.println("MichigetService.java --- id : "+ id);
-		System.out.println("MichigetService.java --- pass : "+pass);
 		
+		int check_return = 0;
+		System.out.println("MichigetService.java --- id : " + id);
+		System.out.println("MichigetService.java --- pass : " + pass);
+
 		UserInfo userInfo = michigetDao.getLoginId(id);
 
 		HttpSession session = request.getSession();
@@ -127,7 +129,6 @@ public class MichigetService implements MichigetController {
 		// logger.debug("userInfo = " + userInfo);
 		if (userInfo.getId() != null || userInfo.getId() != "") {
 			if (!(userInfo.getPass().equals(pass))) {
-
 
 				ModelAndView mav = new ModelAndView("home");
 				check_return = 2;
@@ -160,6 +161,19 @@ public class MichigetService implements MichigetController {
 		ArrayList<Board> boardList = michigetDao.getBoardList();
 		ModelAndView mav = new ModelAndView("board");
 		mav.addObject("boardList", boardList);
+
+		return mav;
+	}
+
+	@Override
+	public ModelAndView contentAction(String idx, HttpServletRequest request)
+			throws Exception {
+		logger.info("게시글 선택 조회");
+
+		Board boardContentList = michigetDao.getContent(idx);
+
+		ModelAndView mav = new ModelAndView("contnet");
+		mav.addObject("boardContentList", boardContentList);
 
 		return mav;
 	}

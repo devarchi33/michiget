@@ -1,20 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="com.michiget.beans.Board"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.michiget.beans.UserInfo"%>
-<%@ page session="true"%>
-<%
-	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-	if (userInfo != null)
-		System.out.println("home.jsp : Session ok!! now Member-List");
-	else
-		System.out.println("home.jsp : Session invalidated!!");
-%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Spring-MemberList</title>
+<title>Spring-BoardList</title>
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
@@ -23,35 +15,32 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 </head>
+<%
+	Board board = new Board();
+%>
 <body>
-	<p><%=userInfo.getNick()%>님으로 로그인 하셨습니다.
-	</p>
 	<table border="1">
 		<thead>
 			<tr>
 				<th>번호</th>
-				<th>아이디</th>
-				<th>대화명</th>
-				<th>성별</th>
-				<th>이메일</th>
-				<th>ip</th>
-				<th>가입일</th>
+				<th>제목</th>
+				<th>내용</th>
 			</tr>
 		</thead>
-		<c:forEach items="${userList }" var="userList">
+		<tbody>
 			<tr>
-				<td>${userList.idx }</td>
-				<td>${userList.id }</td>
-				<td>${userList.nick }</td>
-				<td>${userList.gender }</td>
-				<td>${userList.email1 }@${userList.email2 }</td>
-				<td>${userList.regIp }</td>
-				<td>${userList.regDate }</td>
+				<td><%=board.getIdx()%></td>
+				<td><%=board.getTitle()%></td>
+				<td><%=board.getContent()%></td>
 			</tr>
-		</c:forEach>
+		</tbody>
 	</table>
+
 	<p>
-		<a href="/michiget/join">회원가입</a>
+		<a href="/michiget/write">글쓰기</a>
+	</p>
+	<p>
+		<a href="/michiget/list">회원리스트</a>
 	</p>
 	<p>
 		<a href="/michiget/board">게시글리스트</a>

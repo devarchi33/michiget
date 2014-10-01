@@ -22,7 +22,7 @@
 	
 	<!-- Application Loggers -->
 	<logger name="com.michiget.service">
-		<level value="debug" />
+		<level value="info" />
 		<appender-ref ref="stdout" />
 	</logger>
 	

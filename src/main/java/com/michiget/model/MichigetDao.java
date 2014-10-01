@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.orm.ibatis.support.SqlMapClientDaoSupport;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,8 @@ import com.michiget.beans.UserInfo;
 
 @Repository
 public class MichigetDao extends SqlMapClientDaoSupport {
+
+	static Logger logger = LoggerFactory.getLogger(MichigetDao.class);
 
 	@Resource(name = "sqlMapClient")
 	public void setSuperSqlMapClient(SqlMapClient sqlMapClient) {
@@ -25,7 +29,7 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 		return (ArrayList<UserInfo>) getSqlMapClient().queryForList(
 				"getMemberList", null);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	public ArrayList<Board> getBoardList() throws SQLException {
 		return (ArrayList<Board>) getSqlMapClient().queryForList(
@@ -35,12 +39,17 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 	public void insertMember(UserInfo userInfo) throws SQLException {
 		getSqlMapClient().insert("insertMember", userInfo);
 	}
-	
+
 	public void insertBoard(Board board) throws SQLException {
 		getSqlMapClient().insert("insertBoard", board);
 	}
 
 	public UserInfo getLoginId(String id) throws SQLException {
 		return (UserInfo) getSqlMapClient().queryForObject("getLoginId", id);
+	}
+
+	public Board getContent(String idx) throws SQLException {
+
+		return (Board) getSqlMapClient().queryForObject("getContent", idx);
 	}
 }
