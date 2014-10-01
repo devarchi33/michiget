@@ -23,13 +23,30 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+<style type="text/css">
+th,td {
+	text-align: center;
+}
+
+ul {
+	width: 150px;
+	height: 150px;
+	list-style: none;
+	margin: auto;
+	margin-top: 10px;
+}
+
+li {
+	margin-top: 5px;
+}
+</style>
 </head>
 <body>
 	<p><%=userInfo.getNick()%>님으로 로그인 하셨습니다.
 	</p>
-	<table border="1">
+	<table class="table table-bordered table-hover">
 		<thead>
-			<tr>
+			<tr class="danger">
 				<th>번호</th>
 				<th>제목</th>
 				<th>글쓴이</th>
@@ -38,29 +55,23 @@
 			</tr>
 		</thead>
 		<c:forEach items="${boardList }" var="boardList">
-			<tr>
-				<td>${boardList.idx }</td>
-
-				<td><a href="content?idx=${boardList.idx }">${boardList.title }</a></td>
-
-				<td>${boardList.writer }</td>
-				<td>${boardList.count }</td>
-				<td>${boardList.regdate }</td>
-			</tr>
+			<tbody>
+				<tr>
+					<td>${boardList.idx }</td>
+					<td class="success"><a href="content?idx=${boardList.idx }">${boardList.title}</a></td>
+					<td>${boardList.writer }</td>
+					<td>${boardList.count }</td>
+					<td>${boardList.regdate }</td>
+				</tr>
+			</tbody>
 		</c:forEach>
 	</table>
+	<ul>
+		<li><a href="/michiget/write">글쓰기</a></li>
+		<li><a href="/michiget/list">회원리스트</a></li>
+		<li><a href="/michiget/logout">로그아웃</a></li>
+		<li><a href="/michiget/content?idx=84">content --- 테스트용(사용안함)</a></li>
+	</ul>
 
-	<p>
-		<a href="/michiget/write">글쓰기</a>
-	</p>
-	<p>
-		<a href="/michiget/list">회원리스트</a>
-	</p>
-	<p>
-		<a href="/michiget/logout">로그아웃</a>
-	</p>
-	<p>
-		<a href="/michiget/content?idx=84">content --- 테스트용(사용안함)</a>
-	</p>
 </body>
 </html>

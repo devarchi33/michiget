@@ -15,7 +15,7 @@
 	</select>
 
 	<select id="getBoardList" resultClass="board">
-		select * from board2
+		select * from michiget.board2 order by michiget.board2."idx" asc
 	</select>
 
 	<insert id="insertMember" parameterClass="userInfo"> 
@@ -29,8 +29,8 @@
 
 	<insert id="insertBoard" parameterClass="board"> 
 	<![CDATA[
-		INSERT INTO board2
-			 
+		INSERT INTO michiget.board2
+			 (michiget.board2."idx", michiget.board2."title", michiget.board2."writer", michiget.board2."regdate", michiget.board2."count", michiget.board2."content")
 		 VALUES 
 			 (board_seq.nextval, #title#, #writer#, #regdate#, 1, #content#)
 	]]>

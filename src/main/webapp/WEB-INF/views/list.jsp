@@ -15,6 +15,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Spring-MemberList</title>
+
+<link rel="stylesheet" type="text/css" href="css/common.css" />
+
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
@@ -22,13 +25,31 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+<style type="text/css">
+th,td {
+	text-align: center;
+}
+
+ul {
+	width: 150px;
+	height: 150px;
+	list-style: none;
+	margin: auto;
+	margin-top: 10px;
+}
+
+li {
+	margin-top: 5px;
+}
+</style>
 </head>
+
 <body>
 	<p><%=userInfo.getNick()%>님으로 로그인 하셨습니다.
 	</p>
-	<table border="1">
+	<table class="table table-bordered table-hover">
 		<thead>
-			<tr>
+			<tr class="danger">
 				<th>번호</th>
 				<th>아이디</th>
 				<th>대화명</th>
@@ -39,25 +60,23 @@
 			</tr>
 		</thead>
 		<c:forEach items="${userList }" var="userList">
-			<tr>
-				<td>${userList.idx }</td>
-				<td>${userList.id }</td>
-				<td>${userList.nick }</td>
-				<td>${userList.gender }</td>
-				<td>${userList.email1 }@${userList.email2 }</td>
-				<td>${userList.regIp }</td>
-				<td>${userList.regDate }</td>
-			</tr>
+			<tbody>
+				<tr>
+					<td>${userList.idx }</td>
+					<td class="success">${userList.id }</td>
+					<td>${userList.nick }</td>
+					<td>${userList.gender }</td>
+					<td>${userList.email1 }@${userList.email2 }</td>
+					<td>${userList.regIp }</td>
+					<td>${userList.regDate }</td>
+				</tr>
+			</tbody>
 		</c:forEach>
 	</table>
-	<p>
-		<a href="/michiget/join">회원가입</a>
-	</p>
-	<p>
-		<a href="/michiget/board">게시글리스트</a>
-	</p>
-	<p>
-		<a href="/michiget/logout">로그아웃</a>
-	</p>
+	<ul>
+		<li><a href="/michiget/join">회원가입</a></li>
+		<li><a href="/michiget/board">게시글리스트</a></li>
+		<li><a href="/michiget/logout">로그아웃</a></li>
+	</ul>
 </body>
 </html>

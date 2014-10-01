@@ -21,6 +21,25 @@ button {
 	width: 70px;
 	height: 30px;
 }
+
+table,ul {
+	margin: auto;
+}
+
+table {
+	margin-top: 100px;
+}
+
+ul {
+	width: 150px;
+	height: 150px;
+	list-style: none;
+	margin-top: 10px;
+}
+
+li {
+	margin-top: 5px;
+}
 </style>
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
@@ -77,22 +96,19 @@ button {
 						<td><%=userInfo.getNick()%>님, 환영합니다.</td>
 					</tr>
 
-					<tr>
-						<td><input type="submit" value="로그아웃" /></td>
-					</tr>
-
 				</table>
+
+				<ul>
+					<li><button class="btn btn-primary btn-xs" type="submit"
+							value="로그아웃">로그아웃</button></li>
+					<li><a href="/michiget/join">회원가입</a></li>
+					<li><a href="/michiget/list">회원리스트</a></li>
+					<li><a href="/michiget/board">게시글리스트</a></li>
+				</ul>
 			</form>
-			<p>
-				<a href="/michiget/join">회원가입</a>
-			</p>
-			<p>
-				<a href="/michiget/list">회원리스트</a>
-			</p>
-			<p>
-				<a href="/michiget/board">게시글리스트</a>
-			</p>
-			
+
+
+
 		</c:when>
 		<c:otherwise>
 
@@ -120,15 +136,15 @@ button {
 					</tr>
 
 				</table>
-				<p>
-					<button class="btn btn-primary btn-xs" type="submit" value="로그인">
-						로그인</button>
-				</p>
+				<ul>
+					<li><button class="btn btn-primary btn-xs" type="submit"
+							value="로그인">로그인</button></li>
+					<li><a href="/michiget/join">회원가입</a></li>
+
+				</ul>
 			</form>
 
-			<p>
-				<a href="/michiget/join">회원가입</a>
-			</p>
+
 		</c:otherwise>
 	</c:choose>
 
