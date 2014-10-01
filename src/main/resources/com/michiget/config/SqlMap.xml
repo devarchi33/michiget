@@ -39,5 +39,9 @@
 	<select id="getLoginId" resultClass="userInfo" parameterClass="str">
 		select ID,PASS,NICK from MEMBER where ID = #id#
 	</select>
+	
+	<select id="getContent" resultClass="board" parameterClass="str">
+		select * from michiget.board2 where michiget.board2."idx" = #idx#
+	</select>
 
 </sqlMap>

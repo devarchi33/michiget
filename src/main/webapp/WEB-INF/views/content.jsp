@@ -15,9 +15,6 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 </head>
-<%
-	Board board = new Board();
-%>
 <body>
 	<table border="1">
 		<thead>
@@ -27,13 +24,15 @@
 				<th>내용</th>
 			</tr>
 		</thead>
-		<tbody>
-			<tr>
-				<td><%=board.getIdx()%></td>
-				<td><%=board.getTitle()%></td>
-				<td><%=board.getContent()%></td>
-			</tr>
-		</tbody>
+		<c:forEach items="${boardContentList }" var="boardContentList">
+			<tbody >
+				<tr>
+					<td>${boardContentList.idx }</td>
+					<td>${boardContentList.title }</td>
+					<td>${boardContentList.content }</td>
+				</tr>
+			</tbody>
+		</c:forEach>
 	</table>
 
 	<p>

@@ -59,6 +59,7 @@ li {
 				<tr>
 					<td>${boardList.idx }</td>
 					<td class="success"><a href="content?idx=${boardList.idx }">${boardList.title}</a></td>
+					<!-- /article/list.ok?communityId=${article.communityId}-->
 					<td>${boardList.writer }</td>
 					<td>${boardList.count }</td>
 					<td>${boardList.regdate }</td>
