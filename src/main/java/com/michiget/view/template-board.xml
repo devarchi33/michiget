@@ -3,8 +3,8 @@
 
 <tiles-definitions>
 
-	<definition name="write" 	template="/WEB-INF/views/boardWrite.jsp" />
-	<definition name="board" 	template="/WEB-INF/views/board.jsp" />
-	<definition name="content" 	template="/WEB-INF/views/content.jsp" />
+	<definition name="write" 	template="/WEB-INF/views/board/boardWrite.jsp" />
+	<definition name="board" 	template="/WEB-INF/views/board/board.jsp" />
+	<definition name="content" 	template="/WEB-INF/views/board/content.jsp" />
 	
 </tiles-definitions>
