@@ -48,8 +48,7 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 		return (UserInfo) getSqlMapClient().queryForObject("getLoginId", id);
 	}
 
-	public Board getContent(String idx) throws SQLException {
-
+	public Board getContent(int idx) throws SQLException {
 		return (Board) getSqlMapClient().queryForObject("getContent", idx);
 	}
 }

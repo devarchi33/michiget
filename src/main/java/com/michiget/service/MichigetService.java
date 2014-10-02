@@ -13,7 +13,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -157,7 +156,6 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	@RequestMapping("/board")
 	public ModelAndView boardAction() throws Exception {
 		logger.info("게시글 리스트 조회");
 
@@ -169,7 +167,7 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView contentAction(String idx, HttpServletRequest request)
+	public ModelAndView contentAction(int idx, HttpServletRequest request)
 			throws Exception {
 		logger.info("게시글 선택 조회");
 

@@ -3,12 +3,8 @@
 
 <tiles-definitions>
 
-	<definition name="home" 	template="/WEB-INF/views/home.jsp" />
-	<definition name="join" 	template="/WEB-INF/views/join.jsp" />
 	<definition name="write" 	template="/WEB-INF/views/boardWrite.jsp" />
-	<definition name="list" 	template="/WEB-INF/views/list.jsp" />
 	<definition name="board" 	template="/WEB-INF/views/board.jsp" />
 	<definition name="content" 	template="/WEB-INF/views/content.jsp" />
-	<definition name="logout" 	template="/WEB-INF/views/logout.jsp" />
 	
 </tiles-definitions>

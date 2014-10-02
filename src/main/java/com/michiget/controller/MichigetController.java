@@ -48,7 +48,7 @@ public interface MichigetController {
 			HttpServletRequest request) throws Exception;
 
 	@RequestMapping(value = "/content", method = RequestMethod.GET)
-	public ModelAndView contentAction(@RequestParam(value = "idx") String idx,
+	public ModelAndView contentAction(@RequestParam(value = "idx") int idx,
 			HttpServletRequest request) throws Exception;
 
 	@RequestMapping("/board")
