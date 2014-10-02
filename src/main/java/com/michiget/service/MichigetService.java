@@ -116,6 +116,8 @@ public class MichigetService implements MichigetController {
 		System.out.println("MichigetService.java --- pass : " + pass);
 
 		UserInfo userInfo = michigetDao.getLoginId(id);
+		String loginId = userInfo.getId();
+		String loginPass = userInfo.getPass();
 
 		HttpSession session = request.getSession();
 		session.setAttribute("userInfo", userInfo);
@@ -127,7 +129,7 @@ public class MichigetService implements MichigetController {
 		logger.debug("입력한 Pass = " + pass);
 
 		// logger.debug("userInfo = " + userInfo);
-		if (userInfo.getId() != null || userInfo.getId() != "") {
+		if (loginId != null || loginId != "") {
 			if (!(userInfo.getPass().equals(pass))) {
 
 				ModelAndView mav = new ModelAndView("home");
@@ -136,7 +138,7 @@ public class MichigetService implements MichigetController {
 
 				return mav;
 			}
-		} else if (userInfo.getPass() != null || userInfo.getPass() != "") {
+		} else if (loginPass != null || loginPass != "") {
 			if (userInfo.getId() == null) {
 				ModelAndView mav = new ModelAndView("home");
 				check_return = 1;
