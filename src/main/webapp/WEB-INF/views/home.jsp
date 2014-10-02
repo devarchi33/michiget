@@ -5,6 +5,8 @@
 <%@ page session="true"%>
 <%
 	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
+	//String loginId = session.getAttribute("loginId").toString();
+	//System.out.println(loginId);
 	if (userInfo != null)
 		System.out.println("home.jsp : Session ok!!");
 	else
@@ -22,7 +24,7 @@ button {
 	height: 30px;
 }
 
-table,ul {
+table, ul {
 	margin: auto;
 }
 
@@ -93,7 +95,7 @@ li {
 				<table>
 
 					<tr>
-						<td><%=userInfo.getNick()%>님, 환영합니다.</td>
+						<td><%=userInfo.getId()%>님, 환영합니다.</td>
 					</tr>
 
 				</table>

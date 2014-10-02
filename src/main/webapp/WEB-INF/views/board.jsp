@@ -5,10 +5,11 @@
 <%@ page session="true"%>
 <%
 	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-	if (userInfo != null)
-		System.out.println("home.jsp : Session ok!! now Board-List ");
+	String loginId = session.getAttribute("loginId").toString();
+	if (userInfo != null && loginId != null)
+		System.out.println("board.jsp : Session ok!!");
 	else
-		System.out.println("home.jsp : Session invalidated!!");
+		System.out.println("board.jsp : Session invalidated!!");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -24,7 +25,7 @@
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
 <style type="text/css">
-th,td {
+th, td {
 	text-align: center;
 }
 
@@ -42,7 +43,7 @@ li {
 </style>
 </head>
 <body>
-	<p><%=userInfo.getNick()%>님으로 로그인 하셨습니다.
+	<p><%=loginId%>님으로 로그인 하셨습니다.
 	</p>
 	<table class="table table-bordered table-hover">
 		<thead>

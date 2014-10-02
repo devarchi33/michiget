@@ -121,6 +121,7 @@ public class MichigetService implements MichigetController {
 
 		HttpSession session = request.getSession();
 		session.setAttribute("userInfo", userInfo);
+		session.setAttribute("loginId", loginId);
 
 		logger.debug("db Id = " + userInfo.getId());
 		logger.debug("db Pass = " + userInfo.getPass());

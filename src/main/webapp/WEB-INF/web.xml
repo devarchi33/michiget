@@ -27,7 +27,8 @@
 	<filter-class>com.iruen.tech.jkeeper.servlet.ServletFilter</filter-class>
 	<init-param>
 		<param-name>LoginIdVariable</param-name>
-		<param-value>userId</param-value>
+		<param-value>id</param-value>
+		<param-value>loginId</param-value>
 	</init-param>
 </filter>
 
