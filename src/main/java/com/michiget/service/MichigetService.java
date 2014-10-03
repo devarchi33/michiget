@@ -109,7 +109,7 @@ public class MichigetService implements MichigetController {
 			@RequestParam(value = "pass") String pass,
 			HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
-		
+
 		int check_return = 0;
 		System.out.println("MichigetService.java --- id : " + id);
 		System.out.println("MichigetService.java --- pass : " + pass);
@@ -156,12 +156,20 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView boardAction() throws Exception {
+	public ModelAndView boardAction(HttpServletRequest request)
+			throws Exception {
 		logger.info("게시글 리스트 조회");
 
-		ArrayList<Board> boardList = michigetDao.getBoardList();
+		int page = 0;
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		ArrayList<Board> boardList = michigetDao.getBoardList(page);
 		ModelAndView mav = new ModelAndView("board");
 		mav.addObject("boardList", boardList);
+		mav.addObject("page", page);
 
 		return mav;
 	}

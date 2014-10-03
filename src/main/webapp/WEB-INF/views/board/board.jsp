@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!-- 리스트의 사이즈 조사를 위한 태그 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- 소수점처리 위한 태그 -->
+
 <%@ page import="com.michiget.beans.UserInfo"%>
 <%@ page session="true"%>
 <%
@@ -46,7 +51,8 @@
 			<tbody>
 				<tr>
 					<td>${boardList.idx }</td>
-					<td class="success"><a href="content?title=${boardList.title }">${boardList.title}</a></td>
+					<td class="success"><a
+						href="content?title=${boardList.title }">${boardList.title}</a></td>
 					<!-- /article/list.ok?communityId=${article.communityId}-->
 					<td>${boardList.writer }</td>
 					<td>${boardList.count }</td>
@@ -55,6 +61,23 @@
 			</tbody>
 		</c:forEach>
 	</table>
+
+	<c:if test="${page > 0}">
+		<a href="/michiget/board?page=${page-8}">이전페이지</a>
+	</c:if>
+	<c:if test="${page == 0}">
+		<a href="#">이전페이지</a>
+	</c:if>
+	
+	<fmt:parseNumber value="${page/8+1 }" type="number" integerOnly="True" />페이지
+	
+	<c:if test="${fn:length( boardList ) < 8}">
+		<a href="#">다음페이지</a>
+	</c:if>
+	<c:if test="${fn:length( boardList ) == 8}">
+		<a href="/michiget/board?page=${page+8}">다음페이지</a>
+	</c:if>
+
 	<ul>
 		<li><a href="/michiget/write">글쓰기</a></li>
 		<li><a href="/michiget/list">회원리스트</a></li>
