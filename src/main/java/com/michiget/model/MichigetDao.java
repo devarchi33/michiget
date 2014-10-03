@@ -36,6 +36,12 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 				"getBoardList", null, page, 8);
 	}
 
+	@SuppressWarnings("unchecked")
+	public ArrayList<Board> getContent(String title) throws SQLException {
+		return (ArrayList<Board>) getSqlMapClient().queryForList("getContent",
+				title);
+	}
+
 	public void insertMember(UserInfo userInfo) throws SQLException {
 		getSqlMapClient().insert("insertMember", userInfo);
 	}
@@ -48,7 +54,4 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 		return (UserInfo) getSqlMapClient().queryForObject("getLoginId", id);
 	}
 
-	public Board getContent(String title) throws SQLException {
-		return (Board) getSqlMapClient().queryForObject("getContent", title);
-	}
 }

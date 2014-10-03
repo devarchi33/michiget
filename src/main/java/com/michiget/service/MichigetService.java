@@ -98,16 +98,16 @@ public class MichigetService implements MichigetController {
 		logger.info("회원리스트 조회");
 
 		int page = 0;
-		
+
 		if (request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));
 		}
-		
+
 		ArrayList<UserInfo> userList = michigetDao.getMemberList(page);
 		ModelAndView mav = new ModelAndView("list");
 		mav.addObject("userList", userList);
 		mav.addObject("page", page);
-		
+
 		return mav;
 	}
 
@@ -131,6 +131,28 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
+	public ModelAndView contentAction(HttpServletRequest request)
+			throws Exception {
+		logger.info("게시글 선택 조회");
+
+		String title = null;
+		
+		logger.info("title : " +request.getParameter("title"));
+		
+		if (request.getParameter("title") != null) {
+			title = request.getParameter("title");
+		}
+
+		ArrayList<Board> boardContentList = michigetDao.getContent(title);
+
+		ModelAndView mav = new ModelAndView("contnet");
+		mav.addObject("boardContentList", boardContentList);
+		mav.addObject("title", title);
+
+		return mav;
+	}
+
+	@Override
 	public ModelAndView loginAction(@RequestParam(value = "id") String id,
 			@RequestParam(value = "pass") String pass,
 			HttpServletRequest request) throws Exception {
@@ -148,8 +170,8 @@ public class MichigetService implements MichigetController {
 		session.setAttribute("userInfo", userInfo);
 		session.setAttribute("loginId", loginId);
 
-		logger.debug("db Id = " + userInfo.getId());
-		logger.debug("db Pass = " + userInfo.getPass());
+		logger.debug("db Id = " + loginId);
+		logger.debug("db Pass = " + loginPass);
 
 		logger.debug("입력한 Id = " + id);
 		logger.debug("입력한 Pass = " + pass);
@@ -164,33 +186,20 @@ public class MichigetService implements MichigetController {
 
 				return mav;
 			}
-		} else if (loginPass != null || loginPass != "") {
+		} /*else if (loginPass != null || loginPass != "") {
 			if (userInfo.getId() == null) {
 				ModelAndView mav = new ModelAndView("home");
 				check_return = 1;
 				mav.addObject("check", check_return);
 				return mav;
 			}
-		}
+		}*/
 
 		logger.debug("db Name = " + userInfo.getNick());
 		ModelAndView mav = new ModelAndView("home");
 		check_return = 0;
 		mav.addObject("check", check_return);
 		mav.addObject("nick", userInfo.getNick());
-		return mav;
-	}
-
-	@Override
-	public ModelAndView contentAction(String title, HttpServletRequest request)
-			throws Exception {
-		logger.info("게시글 선택 조회");
-
-		Board boardContentList = michigetDao.getContent(title);
-
-		ModelAndView mav = new ModelAndView("contnet");
-		mav.addObject("boardContentList", boardContentList);
-
 		return mav;
 	}
 

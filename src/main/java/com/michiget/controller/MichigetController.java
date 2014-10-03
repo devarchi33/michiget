@@ -44,15 +44,16 @@ public interface MichigetController {
 
 	@RequestMapping("/board")
 	public ModelAndView boardAction(HttpServletRequest request) throws Exception;
+	
+	@RequestMapping("/content")
+	public ModelAndView contentAction(
+			HttpServletRequest request) throws Exception;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginAction(@RequestParam(value = "id") String id,
 			@RequestParam(value = "pass") String pass,
 			HttpServletRequest request) throws Exception;
 
-	@RequestMapping("/content")
-	public ModelAndView contentAction(
-			@RequestParam(value = "title") String title,
-			HttpServletRequest request) throws Exception;
+	
 
 }
