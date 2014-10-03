@@ -60,24 +60,26 @@
 			</tbody>
 		</c:forEach>
 	</table>
+	<ul class="pagination">
+		<c:if test="${page > 0}">
+			<li class=""><a href="/michiget/list?page=${page-8}">이전페이지</a></li>
+		</c:if>
+		<c:if test="${page == 0}">
+			<li class=""><a href="#">이전페이지</a></li>
+		</c:if>
 
-	<c:if test="${page > 0}">
-		<a href="/michiget/list?page=${page-8}">이전페이지</a>
-	</c:if>
-	<c:if test="${page == 0}">
-		<a href="#">이전페이지</a>
-	</c:if>
+		<li class=""><a href="#"><fmt:parseNumber
+					value="${page/8+1 }" type="number" integerOnly="True" />페이지</a></li>
 
-	<fmt:parseNumber value="${page/8+1 }" type="number" integerOnly="True" />페이지
+		<c:if test="${fn:length( userList ) < 8}">
+			<li class=""><a href="#">다음페이지</a></li>
+		</c:if>
+		<c:if test="${fn:length( userList ) == 8}">
+			<li class=""><a href="/michiget/list?page=${page+8}">다음페이지</a></li>
+		</c:if>
+	</ul>
 
-	<c:if test="${fn:length( userList ) < 8}">
-		<a href="#">다음페이지</a>
-	</c:if>
-	<c:if test="${fn:length( userList ) == 8}">
-		<a href="/michiget/list?page=${page+8}">다음페이지</a>
-	</c:if>
-
-	<ul>
+	<ul id="menu">
 		<li><a href="/michiget/join">회원가입</a></li>
 		<li><a href="/michiget/board">게시글리스트</a></li>
 		<li><a href="/michiget/logout">로그아웃</a></li>
