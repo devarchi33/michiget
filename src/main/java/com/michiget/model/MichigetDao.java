@@ -25,9 +25,9 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<UserInfo> getMemberList() throws SQLException {
+	public ArrayList<UserInfo> getMemberList(int page) throws SQLException {
 		return (ArrayList<UserInfo>) getSqlMapClient().queryForList(
-				"getMemberList", null, 0, 8);
+				"getMemberList", null, page, 8);
 	}
 
 	@SuppressWarnings("unchecked")

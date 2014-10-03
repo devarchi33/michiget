@@ -94,12 +94,38 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView listAction() throws Exception {
+	public ModelAndView listAction(HttpServletRequest request) throws Exception {
 		logger.info("회원리스트 조회");
 
-		ArrayList<UserInfo> userList = michigetDao.getMemberList();
+		int page = 0;
+		
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+		
+		ArrayList<UserInfo> userList = michigetDao.getMemberList(page);
 		ModelAndView mav = new ModelAndView("list");
 		mav.addObject("userList", userList);
+		mav.addObject("page", page);
+		
+		return mav;
+	}
+
+	@Override
+	public ModelAndView boardAction(HttpServletRequest request)
+			throws Exception {
+		logger.info("게시글 리스트 조회");
+
+		int page = 0;
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		ArrayList<Board> boardList = michigetDao.getBoardList(page);
+		ModelAndView mav = new ModelAndView("board");
+		mav.addObject("boardList", boardList);
+		mav.addObject("page", page);
 
 		return mav;
 	}
@@ -152,25 +178,6 @@ public class MichigetService implements MichigetController {
 		check_return = 0;
 		mav.addObject("check", check_return);
 		mav.addObject("nick", userInfo.getNick());
-		return mav;
-	}
-
-	@Override
-	public ModelAndView boardAction(HttpServletRequest request)
-			throws Exception {
-		logger.info("게시글 리스트 조회");
-
-		int page = 0;
-
-		if (request.getParameter("page") != null) {
-			page = Integer.parseInt(request.getParameter("page"));
-		}
-
-		ArrayList<Board> boardList = michigetDao.getBoardList(page);
-		ModelAndView mav = new ModelAndView("board");
-		mav.addObject("boardList", boardList);
-		mav.addObject("page", page);
-
 		return mav;
 	}
 

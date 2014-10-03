@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<!-- 리스트의 사이즈 조사를 위한 태그 -->
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<!-- 소수점처리 위한 태그 -->
 <%@ page import="com.michiget.beans.UserInfo"%>
 <%@ page session="true"%>
 <%
@@ -56,6 +60,23 @@
 			</tbody>
 		</c:forEach>
 	</table>
+
+	<c:if test="${page > 0}">
+		<a href="/michiget/list?page=${page-8}">이전페이지</a>
+	</c:if>
+	<c:if test="${page == 0}">
+		<a href="#">이전페이지</a>
+	</c:if>
+
+	<fmt:parseNumber value="${page/8+1 }" type="number" integerOnly="True" />페이지
+
+	<c:if test="${fn:length( userList ) < 8}">
+		<a href="#">다음페이지</a>
+	</c:if>
+	<c:if test="${fn:length( userList ) == 8}">
+		<a href="/michiget/list?page=${page+8}">다음페이지</a>
+	</c:if>
+
 	<ul>
 		<li><a href="/michiget/join">회원가입</a></li>
 		<li><a href="/michiget/board">게시글리스트</a></li>

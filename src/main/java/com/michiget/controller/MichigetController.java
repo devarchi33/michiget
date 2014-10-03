@@ -40,7 +40,10 @@ public interface MichigetController {
 			HttpServletRequest request) throws Exception;
 
 	@RequestMapping("/list")
-	public ModelAndView listAction() throws Exception;
+	public ModelAndView listAction(HttpServletRequest request) throws Exception;
+
+	@RequestMapping("/board")
+	public ModelAndView boardAction(HttpServletRequest request) throws Exception;
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public ModelAndView loginAction(@RequestParam(value = "id") String id,
@@ -51,9 +54,5 @@ public interface MichigetController {
 	public ModelAndView contentAction(
 			@RequestParam(value = "title") String title,
 			HttpServletRequest request) throws Exception;
-
-	@RequestMapping("/board")
-	public ModelAndView boardAction(HttpServletRequest request)
-			throws Exception;
 
 }
