@@ -46,7 +46,7 @@
 			<tbody>
 				<tr>
 					<td>${boardList.idx }</td>
-					<td class="success"><a href="content?idx=${boardList.idx }">${boardList.title}</a></td>
+					<td class="success"><a href="content?title=${boardList.title }">${boardList.title}</a></td>
 					<!-- /article/list.ok?communityId=${article.communityId}-->
 					<td>${boardList.writer }</td>
 					<td>${boardList.count }</td>

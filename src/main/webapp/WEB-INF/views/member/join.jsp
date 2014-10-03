@@ -34,19 +34,18 @@
 <body>
 	<form action="/michiget/member" name="joinForm" method="POST"
 		onsubmit="return joinFormCheck();">
-		<table border="1" cellspacing="0" width="500" height="400"
-			align="center">
+		<table>
 			<caption>글쓰기</caption>
-			<tr height="50">
-				<th width="120">아이디</th>
+			<tr>
+				<th>아이디</th>
 				<td><input type="text" name="id" /></td>
 			</tr>
-			<tr height="50">
-				<th width="120">비밀번호</th>
+			<tr>
+				<th>비밀번호</th>
 				<td><input type="password" name="pass" /></td>
 			</tr>
-			<tr height="50">
-				<th width="120">대화명</th>
+			<tr>
+				<th>대화명</th>
 				<td><input type="text" size="" name="nick" /></td>
 			</tr>
 
@@ -62,7 +61,7 @@
 						type="text" size="5" name="ph3" />
 					</td>
 				</tr> -->
-			<tr height="50">
+			<tr>
 				<th>성별</th>
 				<td><input type="radio" name="gender" value="남자"
 					checked="checked" />남자 <input type="radio" name="gender"
@@ -70,8 +69,8 @@
 			</tr>
 			<tr>
 				<th>이메일</th>
-				<td>&nbsp;&nbsp;<input type="text" size="15" name="email1" />@
-					<input type="text" size="15" name="email2" />&nbsp; <select
+				<td>&nbsp;&nbsp;<input type="text" name="email1" />@
+					<input type="text" name="email2" />&nbsp; <select
 					name="email3" onchange="mail_sel()">
 						<option value="">직접입력</option>
 						<option value="hanmail.net">hanmail.net</option>

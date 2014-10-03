@@ -167,11 +167,11 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView contentAction(int idx, HttpServletRequest request)
+	public ModelAndView contentAction(String title, HttpServletRequest request)
 			throws Exception {
 		logger.info("게시글 선택 조회");
 
-		Board boardContentList = michigetDao.getContent(idx);
+		Board boardContentList = michigetDao.getContent(title);
 
 		ModelAndView mav = new ModelAndView("contnet");
 		mav.addObject("boardContentList", boardContentList);

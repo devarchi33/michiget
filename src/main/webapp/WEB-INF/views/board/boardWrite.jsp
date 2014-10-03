@@ -8,7 +8,7 @@
 		System.out.println("home.jsp : Session ok!! now Board-write");
 	else
 		System.out.println("home.jsp : Session invalidated!!");
-%>	
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,7 +17,8 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
-
+<!-- form CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/form.css" />
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
@@ -26,7 +27,7 @@
 
 		var title = document.forms[0].title.value; // 사용하기 쉽도록 변수를 선언하여 담아주고,
 		var writer = document.forms[0].writer.value;
-		var regdate = document.forms[0].regdate.value;
+		//var regdate = document.forms[0].regdate.value;
 		//var content = document.forms[0].content.value;   
 
 		if (title == null || title == "") { // null인지 비교한 뒤
@@ -39,31 +40,45 @@
 			alert('작성자를 입력하세요');
 			document.forms[0].writer.focus();
 			return false;
-		} else if (writer.match(/^(\w+)@(\w+)[.](\w+)$/ig) == null) {
-			alert('이메일 형식으로 입력하세요');
-			document.forms[0].writer.focus();
-			return false;
-		}
+		} /*else if (writer.match(/^(\w+)@(\w+)[.](\w+)$/ig) == null) {
+										alert('이메일 형식으로 입력하세요');
+										document.forms[0].writer.focus();
+										return false;
+									}*/
 
 	} // function end
 </script>
 </head>
 <body>
-	<p><%=userInfo.getNick()%>님으로 로그인 하셨습니다.
-	</p>
-	<form action="/michiget/board" name="boardWrite" method="post"
+	<div>
+		<%=userInfo.getId()%>님이 로그인 하셨습니다.
+	</div>
+	<form action="/michiget/board" name="boardWrite" method="POST"
 		onsubmit="return formCheck();">
-		<p align="center">
-			제목 : <input type="text" name="title"
-				style="height: 30px; width: 150px"><br> 작성자 :<input
-				type="text" name="writer"
-				style="height: 30px; width: 150px; left: auto"><br> 내용
-			:
-			<textarea name="content" cols="20" rows="10"
-				style="height: 200px; width: 150px; list-style-type: circle; cursor: text"></textarea>
-			<br> <input type="submit" name="제출"
-				style="height: 30px; width: 80px">
-		</p>
+		<div class="row">
+			<div class="form-froup col-lg-2">
+				<label for="제목">제목</label> <input type="text" class="form-control"
+					placeholder="title" name="title">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-froup col-lg-2">
+				<label for="작성자">작성자</label> <input type="text" class="form-control"
+					placeholder="writer" name="writer">
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-froup col-lg-2">
+				<label for="내용">내용</label>
+				<textarea name="content" class="form-control" placeholder="content"
+					rows="10"></textarea>
+			</div>
+		</div>
+		<div class="row">
+			<div class="form-group col-lg-2">
+				<button type="submit" class="btn btn-primary">제출</button>
+			</div>
+		</div>
 	</form>
 </body>
 </html>
