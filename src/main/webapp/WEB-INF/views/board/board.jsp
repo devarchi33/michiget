@@ -20,27 +20,14 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
-
+<!-- 공통 CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/common.css" />
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
-<style type="text/css">
-th, td {
-	text-align: center;
-}
+<!-- <style type="text/css">
 
-ul {
-	width: 150px;
-	height: 150px;
-	list-style: none;
-	margin: auto;
-	margin-top: 10px;
-}
-
-li {
-	margin-top: 5px;
-}
-</style>
+</style>  -->
 </head>
 <body>
 	<p><%=loginId%>님으로 로그인 하셨습니다.

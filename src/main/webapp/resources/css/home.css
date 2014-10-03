@@ -1,0 +1,25 @@
+@CHARSET "UTF-8";
+
+button {
+	width: 70px;
+	height: 30px;
+}
+
+table, ul {
+	margin: auto;
+}
+
+table {
+	margin-top: 100px;
+}
+
+ul {
+	width: 150px;
+	height: 150px;
+	list-style: none;
+	margin-top: 10px;
+}
+
+li {
+	margin-top: 5px;
+}

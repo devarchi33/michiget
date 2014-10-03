@@ -1,0 +1,17 @@
+@CHARSET "UTF-8";
+
+th, td {
+	text-align: center;
+}
+
+ul {
+	width: 150px;
+	height: 150px;
+	list-style: none;
+	margin: auto;
+	margin-top: 10px;
+}
+
+li {
+	margin-top: 5px;
+}
