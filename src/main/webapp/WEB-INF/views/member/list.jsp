@@ -32,57 +32,74 @@
 </head>
 
 <body>
-	<p><%=loginId%>님으로 로그인 하셨습니다.
-	</p>
-	<table class="table table-bordered table-hover">
-		<thead>
-			<tr class="danger">
-				<th>번호</th>
-				<th>아이디</th>
-				<th>대화명</th>
-				<th>성별</th>
-				<th>이메일</th>
-				<th>ip</th>
-				<th>가입일</th>
-			</tr>
-		</thead>
-		<c:forEach items="${userList }" var="userList">
-			<tbody>
-				<tr>
-					<td>${userList.idx }</td>
-					<td class="success">${userList.id }</td>
-					<td>${userList.nick }</td>
-					<td>${userList.gender }</td>
-					<td>${userList.email1 }@${userList.email2 }</td>
-					<td>${userList.regIp }</td>
-					<td>${userList.regDate }</td>
-				</tr>
-			</tbody>
-		</c:forEach>
-	</table>
-	<ul class="pagination">
-		<c:if test="${page > 0}">
-			<li class=""><a href="/michiget/list?page=${page-8}">이전페이지</a></li>
-		</c:if>
-		<c:if test="${page == 0}">
-			<li class=""><a href="#">이전페이지</a></li>
-		</c:if>
+	<div id="wrap">
+		<div id="header">
+			<p><%=loginId%>님으로 로그인 하셨습니다.
+			</p>
+			<ul class="nav nav-pills nav-justified">
+				<li class="active"><a href="#">Home</a></li>
+				<li><a href="/michiget/board">게시글리스트</a></li>
+				<li><a href="/michiget/list">직원리스트</a></li>
+				<li><a href="/michiget/list">부서리스트</a></li>
+				<li><a href="/michiget/list">급여등급리스트</a></li>
+			</ul>
+		</div>
 
-		<li class=""><a href="#"><fmt:parseNumber
-					value="${page/8+1 }" type="number" integerOnly="True" />페이지</a></li>
+		<div id="container">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr class="danger">
+						<th>번호</th>
+						<th>아이디</th>
+						<th>대화명</th>
+						<th>성별</th>
+						<th>이메일</th>
+						<th>ip</th>
+						<th>가입일</th>
+					</tr>
+				</thead>
+				<c:forEach items="${userList }" var="userList">
+					<tbody>
+						<tr>
+							<td>${userList.idx }</td>
+							<td class="success">${userList.id }</td>
+							<td>${userList.nick }</td>
+							<td>${userList.gender }</td>
+							<td>${userList.email1 }@${userList.email2 }</td>
+							<td>${userList.regIp }</td>
+							<td>${userList.regDate }</td>
+						</tr>
+					</tbody>
+				</c:forEach>
+			</table>
 
-		<c:if test="${fn:length( userList ) < 8}">
-			<li class=""><a href="#">다음페이지</a></li>
-		</c:if>
-		<c:if test="${fn:length( userList ) == 8}">
-			<li class=""><a href="/michiget/list?page=${page+8}">다음페이지</a></li>
-		</c:if>
-	</ul>
+			<div id="page">
+				<ul class="pagination">
+					<c:if test="${page > 0}">
+						<li class=""><a href="/michiget/list?page=${page-8}">이전페이지</a></li>
+					</c:if>
+					<c:if test="${page == 0}">
+						<li class=""><a href="#">이전페이지</a></li>
+					</c:if>
 
-	<ul id="menu">
-		<li><a href="/michiget/join">회원가입</a></li>
-		<li><a href="/michiget/board">게시글리스트</a></li>
-		<li><a href="/michiget/logout">로그아웃</a></li>
-	</ul>
+					<li class=""><a href="#"><fmt:parseNumber
+								value="${page/8+1 }" type="number" integerOnly="True" />페이지</a></li>
+
+					<c:if test="${fn:length( userList ) < 8}">
+						<li class=""><a href="#">다음페이지</a></li>
+					</c:if>
+					<c:if test="${fn:length( userList ) == 8}">
+						<li class=""><a href="/michiget/list?page=${page+8}">다음페이지</a></li>
+					</c:if>
+				</ul>
+			</div>
+
+			<ul id="menu">
+				<li><a href="/michiget/join">회원가입</a></li>
+				<li><a href="/michiget/logout">로그아웃</a></li>
+			</ul>
+		</div>
+		<div id="footer"></div>
+	</div>
 </body>
 </html>

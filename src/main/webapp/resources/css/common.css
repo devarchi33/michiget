@@ -1,6 +1,31 @@
 @CHARSET "UTF-8";
 
-th, td {
+#wrap {
+	width: 970px;
+	margin: 0 auto;
+	font-family: "lucida grande", Tahoma, Verdana, Helvetica, sans-serif,
+		"나눔고딕", NanumGothic, "돋움", Dotum
+}
+
+	#header {
+		height: 96px;
+		padding-top: 23px;
+		position: relative;
+		border-top: 1px solid #a3a3a3
+	}
+	
+	#container {
+		
+	}
+	
+	#footer {
+		clear: both;
+		padding-top: 15px;
+		height: 46px;
+		border-top: 1px solid #a3a3a3
+	}
+
+th,td {
 	text-align: center;
 }
 
@@ -12,10 +37,8 @@ th, td {
 	margin-top: 10px;
 }
 
-.pagination {
-	
+#page {
+	width: 270px;
+	margin: auto;
 }
 
-li {
-	margin-top: 5px;
-} 

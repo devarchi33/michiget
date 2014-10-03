@@ -135,19 +135,19 @@ public class MichigetService implements MichigetController {
 			throws Exception {
 		logger.info("게시글 선택 조회");
 
-		String title = null;
-		
-		logger.info("title : " +request.getParameter("title"));
-		
-		if (request.getParameter("title") != null) {
-			title = request.getParameter("title");
+		int idx = 0;
+
+		logger.info("idx : " + request.getParameter("idx"));
+
+		if (request.getParameter("idx") != null) {
+			idx = Integer.parseInt(request.getParameter("idx"));
 		}
 
-		ArrayList<Board> boardContentList = michigetDao.getContent(title);
+		ArrayList<Board> boardContentList = michigetDao.getContent(idx);
 
-		ModelAndView mav = new ModelAndView("contnet");
+		ModelAndView mav = new ModelAndView("content");
 		mav.addObject("boardContentList", boardContentList);
-		mav.addObject("title", title);
+		mav.addObject("idx", idx);
 
 		return mav;
 	}
@@ -186,14 +186,11 @@ public class MichigetService implements MichigetController {
 
 				return mav;
 			}
-		} /*else if (loginPass != null || loginPass != "") {
-			if (userInfo.getId() == null) {
-				ModelAndView mav = new ModelAndView("home");
-				check_return = 1;
-				mav.addObject("check", check_return);
-				return mav;
-			}
-		}*/
+		} /*
+		 * else if (loginPass != null || loginPass != "") { if (userInfo.getId()
+		 * == null) { ModelAndView mav = new ModelAndView("home"); check_return
+		 * = 1; mav.addObject("check", check_return); return mav; } }
+		 */
 
 		logger.debug("db Name = " + userInfo.getNick());
 		ModelAndView mav = new ModelAndView("home");

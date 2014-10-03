@@ -37,9 +37,9 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
-	public ArrayList<Board> getContent(String title) throws SQLException {
+	public ArrayList<Board> getContent(int idx) throws SQLException {
 		return (ArrayList<Board>) getSqlMapClient().queryForList("getContent",
-				title);
+				idx);
 	}
 
 	public void insertMember(UserInfo userInfo) throws SQLException {

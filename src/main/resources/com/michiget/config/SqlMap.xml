@@ -18,8 +18,8 @@
 		select * from michiget.board2 order by michiget.board2."idx" asc
 	</select>
 	
-	<select id="getContent" resultClass="board" parameterClass="str">
-		select * from michiget.board2 where michiget.board2."title" = #title#
+	<select id="getContent" resultClass="board" parameterClass="int">
+		select * from michiget.board2 where michiget.board2."idx" = #idx#
 	</select>
 
 	<insert id="insertMember" parameterClass="userInfo"> 
