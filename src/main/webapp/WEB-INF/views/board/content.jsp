@@ -26,6 +26,9 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
+<!-- formChech 자바스크립트 -->
+<script type="text/javascript" src="resources/js/formCheck.js"></script>
+
 </head>
 <body>
 	<!-- wrap -->
@@ -40,8 +43,9 @@
 			<div class="page-header">
 				<c:forEach items="${boardContentList }" var="boardContentList">
 					<h1>
-						제목 : "${boardContentList.title }" 상세보기&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로
-							로그인 하셨습니다.</small>
+						제목 : "${boardContentList.title }" 상세보기&nbsp;&nbsp;<small>현재
+							"<%=loginId%>"님으로 로그인 하셨습니다.
+						</small>
 					</h1>
 				</c:forEach>
 			</div>
@@ -77,11 +81,13 @@
 			</table>
 
 			<div class="btn-group">
-				<form action="/michiget/write" method="get">
-					<ul>
-						<li><button class="btn btn-primary" type="submit" value="글쓰기">글쓰기</button></li>
+				<c:forEach items="${boardContentList }" var="boardContentList">
+					<ul class="breadcrumb">
+						<li><a class="btn btn-primary" href="/michiget/write">글쓰기</a></li>
+						<li><a class="btn btn-primary"
+							href="/michiget/contentDelete?idx=${boardContentList.idx }">삭제하기</a></li>
 					</ul>
-				</form>
+				</c:forEach>
 			</div>
 		</div>
 		<!-- container end -->

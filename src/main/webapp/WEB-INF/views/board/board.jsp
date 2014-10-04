@@ -45,7 +45,8 @@
 
 			<div class="page-header">
 				<h1>
-					게시글 리스트&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로 로그인 하셨습니다.</small>
+					게시글 리스트&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로 로그인 하셨습니다.
+					</small>
 				</h1>
 			</div>
 
@@ -76,7 +77,6 @@
 							<td>${boardList.idx }</td>
 							<td class="success"><a
 								href="/michiget/content?idx=${boardList.idx }">${boardList.title}</a></td>
-							<!-- /article/list.ok?communityId=${article.communityId}-->
 							<td>${boardList.writer }</td>
 							<td>${boardList.count }</td>
 							<td>${boardList.regdate }</td>
@@ -86,7 +86,7 @@
 			</table>
 
 			<div class="btn-group">
-				<form action="/michiget/write" method="get">
+				<form action="/michiget/write">
 					<ul>
 						<li><button class="btn btn-primary" type="submit" value="글쓰기">글쓰기</button></li>
 					</ul>

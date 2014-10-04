@@ -28,3 +28,6 @@ function logCheck(check) {
 function logout() {
 	alert("Thank you for visiting.");
 }
+function contentDelete() {
+	alert("This content has been deleted.");
+}

@@ -35,6 +35,10 @@
 			 (board_seq.nextval, #title#, #writer#, #regdate#, 1, #content#)
 	]]>
 	</insert>
+	
+	<delete id="contentDelete" parameterClass="int">
+		delete from board2 where idx = #idx#
+	</delete>
 
 	<select id="getLoginId" resultClass="userInfo" parameterClass="str">
 		select ID,PASS,NICK from MEMBER where ID = #id#

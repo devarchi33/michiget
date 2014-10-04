@@ -49,6 +49,10 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 	public void insertBoard(Board board) throws SQLException {
 		getSqlMapClient().insert("insertBoard", board);
 	}
+	
+	public void contentDelete(int idx) throws SQLException {
+		getSqlMapClient().delete("contentDelete", idx);
+	}
 
 	public UserInfo getLoginId(String id) throws SQLException {
 		return (UserInfo) getSqlMapClient().queryForObject("getLoginId", id);

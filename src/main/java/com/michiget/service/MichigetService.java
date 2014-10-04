@@ -58,12 +58,22 @@ public class MichigetService implements MichigetController {
 
 		return new ModelAndView("logout");
 	}
-	
+
 	@Override
-	public ModelAndView boardListDelete() throws Exception {
+	public ModelAndView contentDeleteAction(HttpServletRequest request)
+			throws Exception {
 		logger.info("게시글 삭제");
-		
-		
+
+		int idx = 0;
+
+		logger.info("idx : " + request.getParameter("idx"));
+
+		if (request.getParameter("idx") != null) {
+			idx = Integer.parseInt(request.getParameter("idx"));
+		}
+
+		michigetDao.contentDelete(idx);
+
 		return new ModelAndView("redirect:board");
 	}
 
