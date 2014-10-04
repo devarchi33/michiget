@@ -18,114 +18,92 @@
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
+<!-- 공통 CSS -->
+<link rel="stylesheet" type="text/css" href="resources/css/common.css" />
 <!-- home CSS -->
 <link rel="stylesheet" type="text/css" href="resources/css/home.css" />
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
-<script>
-	function formCheck() {
-		var id = document.forms[0].id;
-		var pass = document.forms[0].pass;
+<script type="text/javascript" src="resources/js/formCheck.js"></script>
 
-		if (id.value == null || id.value == "") {
-			alert('아이디를 입력하세요');
-			document.forms[0].id.focus();
-			return false;
-		}
-
-		if (pass.value == null || pass.value == "") {
-			alert('비밀번호를 입력하세요');
-			document.forms[0].pass.focus();
-			return false;
-		}
-
-	}
-	function logCheck(check) {
-		if (check == 1) {
-			alert('존재하지 않는 아이디 입니다.');
-			return false;
-		}
-		if (check == 2) {
-			alert('비밀번호가 틀렸습니다.');
-			return false;
-		}
-	}
-	function logout() {
-		alert("이용해주셔서 감사합니다.");
-	}
-</script>
 </head>
 <body>
+	<!-- wrap -->
+	<div id="wrap">
+		<c:if test="${check == 1 || check == 2}">
+			<script>
+				logCheck("${check}");
+			</script>
+		</c:if>
+		<c:choose>
+			<c:when test="${check == 0 }">
+				<div class="jumbotron">
+					<div class="container">
+						<h1>
+							Hello,"<%=userInfo.getId()%>"
+						</h1>
+						<p>Login Success!!</p>
+						<form action="/michiget/logout" method="get"
+							onsubmit="return logout();">
+							<ul>
+								<li><input class="btn btn-primary" type="submit"
+									value="로그아웃" /></li>
+								<li><a class="btn btn-primary" href="/michiget/join">회원가입</a></li>
+								<li><a class="btn btn-primary" href="/michiget/list">회원리스트</a></li>
+								<li><a class="btn btn-primary" href="/michiget/board">게시글리스트</a></li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</c:when>
+			<c:otherwise>
 
-	<c:if test="${check == 1 || check == 2}">
-		<script>
-			logCheck("${check}");
-		</script>
-	</c:if>
-	<c:choose>
-		<c:when test="${check == 0 }">
+				<div class="jumbotron">
+					<div class="container">
+						<h1>Hello, everybody!</h1>
+						<p>This is a sample application.</p>
+						<form action="/michiget/login" method="POST"
+							onsubmit="return formCheck();">
+							<table>
 
-			<form action="/michiget/logout" method="get"
-				onsubmit="return logout();">
-				<table>
+								<tr>
+									<th>
+										<div class="input-group">
+											<span class="input-group-addon">@</span> <input
+												class="form-control" placeholder="Username" type="text"
+												name="id" size="20">
+										</div>
+									</th>
+								</tr>
+								<tr>
+									<th>
+										<div class="input-group">
+											<span class="input-group-addon">@</span> <input
+												class="form-control" placeholder="Password" size="20"
+												name="pass" type="password">
+										</div>
+									</th>
+								</tr>
 
-					<tr>
-						<td><%=userInfo.getId()%>님, 환영합니다.</td>
-					</tr>
+							</table>
+							<ul>
+								<li><input class="btn btn-primary btn-lg" type="submit"
+									value="로그인" /></li>
+								<li><a class="btn btn-primary btn-lg" href="/michiget/join">회원가입</a></li>
 
-				</table>
-
-				<ul>
-					<li><button class="btn btn-primary btn-xs" type="submit"
-							value="로그아웃">로그아웃</button></li>
-					<li><a href="/michiget/join">회원가입</a></li>
-					<li><a href="/michiget/list">회원리스트</a></li>
-					<li><a href="/michiget/board">게시글리스트</a></li>
-				</ul>
-			</form>
-
-
-
-		</c:when>
-		<c:otherwise>
-
-			<form action="/michiget/login" method="POST"
-				onsubmit="return formCheck();">
-				<table>
-
-					<tr>
-						<th>
-							<div class="input-group">
-								<span class="input-group-addon">@</span> <input
-									class="form-control" placeholder="Username" type="text"
-									name="id" size="20">
-							</div>
-						</th>
-					</tr>
-					<tr>
-						<th>
-							<div class="input-group">
-								<span class="input-group-addon">@</span> <input
-									class="form-control" placeholder="Password" size="20"
-									name="pass" type="password">
-							</div>
-						</th>
-					</tr>
-
-				</table>
-				<ul>
-					<li><button class="btn btn-primary btn-xs" type="submit"
-							value="로그인">로그인</button></li>
-					<li><a href="/michiget/join">회원가입</a></li>
-
-				</ul>
-			</form>
+							</ul>
+						</form>
+					</div>
+				</div>
 
 
-		</c:otherwise>
-	</c:choose>
 
+
+			</c:otherwise>
+		</c:choose>
+	</div>
+	<!-- wrap end -->
 </body>
 </html>

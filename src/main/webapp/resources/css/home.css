@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
 
 button {
-	width: 70px;
-	height: 30px;
+	width: 90px;
+	height: 45px;
 }
 
 table, ul {
@@ -16,7 +16,6 @@ table {
 ul {
 	width: 150px;
 	height: 150px;
-	list-style: none;
 	margin-top: 10px;
 }
 
