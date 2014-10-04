@@ -48,6 +48,18 @@ public interface MichigetController {
 	@RequestMapping("/board")
 	public ModelAndView boardAction(HttpServletRequest request)
 			throws Exception;
+	
+	@RequestMapping("/emp")
+	public ModelAndView empAction(HttpServletRequest request)
+			throws Exception;
+	
+	@RequestMapping("/dept")
+	public ModelAndView deptAction(HttpServletRequest request)
+			throws Exception;
+	
+	@RequestMapping("/salgrade")
+	public ModelAndView salgradeAction(HttpServletRequest request)
+			throws Exception;
 
 	@RequestMapping("/content")
 	public ModelAndView contentAction(HttpServletRequest request)

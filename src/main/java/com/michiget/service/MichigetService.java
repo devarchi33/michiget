@@ -13,11 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.michiget.beans.Board;
+import com.michiget.beans.Dept;
+import com.michiget.beans.Emp;
+import com.michiget.beans.Salgrade;
 import com.michiget.beans.UserInfo;
 import com.michiget.controller.MichigetController;
 import com.michiget.model.MichigetDao;
@@ -150,6 +152,61 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
+	public ModelAndView empAction(HttpServletRequest request) throws Exception {
+		logger.info("emp 리스트 조회");
+
+		int page = 0;
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		ArrayList<Emp> empList = michigetDao.getEmpList(page);
+		ModelAndView mav = new ModelAndView("emp");
+		mav.addObject("empList", empList);
+		mav.addObject("page", page);
+
+		return mav;
+	}
+
+	@Override
+	public ModelAndView deptAction(HttpServletRequest request) throws Exception {
+		logger.info("dept 리스트 조회");
+
+		int page = 0;
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		ArrayList<Dept> deptList = michigetDao.getDeptList(page);
+		ModelAndView mav = new ModelAndView("dept");
+		mav.addObject("deptList", deptList);
+		mav.addObject("page", page);
+
+		return mav;
+	}
+
+	@Override
+	public ModelAndView salgradeAction(HttpServletRequest request)
+			throws Exception {
+		logger.info("salgrade 리스트 조회");
+
+		int page = 0;
+
+		if (request.getParameter("page") != null) {
+			page = Integer.parseInt(request.getParameter("page"));
+		}
+
+		ArrayList<Salgrade> salgradeList = michigetDao.getSalgradeList(page);
+		ModelAndView mav = new ModelAndView("salgrade");
+		mav.addObject("salgradeList", salgradeList);
+		mav.addObject("page", page);
+
+		return mav;
+	}
+
+	@Override
 	public ModelAndView contentAction(HttpServletRequest request)
 			throws Exception {
 		logger.info("게시글 선택 조회");
@@ -218,4 +275,5 @@ public class MichigetService implements MichigetController {
 		mav.addObject("nick", userInfo.getNick());
 		return mav;
 	}
+
 }

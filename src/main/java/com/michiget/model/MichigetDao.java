@@ -12,6 +12,9 @@ import org.springframework.stereotype.Repository;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 import com.michiget.beans.Board;
+import com.michiget.beans.Dept;
+import com.michiget.beans.Emp;
+import com.michiget.beans.Salgrade;
 import com.michiget.beans.UserInfo;
 
 @Repository
@@ -37,6 +40,24 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 	}
 
 	@SuppressWarnings("unchecked")
+	public ArrayList<Emp> getEmpList(int page) throws SQLException {
+		return (ArrayList<Emp>) getSqlMapClient().queryForList("getEmpList",
+				null, page, 8);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Dept> getDeptList(int page) throws SQLException {
+		return (ArrayList<Dept>) getSqlMapClient().queryForList("getDeptList",
+				null, page, 8);
+	}
+
+	@SuppressWarnings("unchecked")
+	public ArrayList<Salgrade> getSalgradeList(int page) throws SQLException {
+		return (ArrayList<Salgrade>) getSqlMapClient().queryForList("getSalgradeList",
+				null, page, 8);
+	}
+
+	@SuppressWarnings("unchecked")
 	public ArrayList<Board> getContent(int idx) throws SQLException {
 		return (ArrayList<Board>) getSqlMapClient().queryForList("getContent",
 				idx);
@@ -49,7 +70,7 @@ public class MichigetDao extends SqlMapClientDaoSupport {
 	public void insertBoard(Board board) throws SQLException {
 		getSqlMapClient().insert("insertBoard", board);
 	}
-	
+
 	public void contentDelete(int idx) throws SQLException {
 		getSqlMapClient().delete("contentDelete", idx);
 	}

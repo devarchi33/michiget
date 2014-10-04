@@ -12,16 +12,16 @@
 	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
 	String loginId = session.getAttribute("loginId").toString();
 	if (userInfo != null && loginId != null)
-		System.out.println("board.jsp : Session ok!!");
+		System.out.println("emp.jsp : Session ok!!");
 	else
-		System.out.println("board.jsp : Session invalidated!!");
+		System.out.println("emp.jsp : Session invalidated!!");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Spring-BoardList</title>
+<title>Spring-EmpList</title>
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
@@ -45,15 +45,15 @@
 
 			<div class="page-header">
 				<h1>
-					게시글 리스트&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로 로그인 하셨습니다.
+					Emp 리스트&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로 로그인 하셨습니다.
 					</small>
 				</h1>
 			</div>
 
 			<ul class="nav nav-pills nav-justified navbar-static-top">
 				<li><a href="/michiget/list">회원리스트</a></li>
-				<li class="active"><a href="/michiget/board">게시글리스트</a></li>
-				<li><a href="/michiget/emp">직원리스트</a></li>
+				<li><a href="/michiget/board">게시글리스트</a></li>
+				<li class="active"><a href="/michiget/emp">직원리스트</a></li>
 				<li><a href="/michiget/dept">부서리스트</a></li>
 				<li><a href="/michiget/salgrade">급여등급리스트</a></li>
 			</ul>
@@ -64,34 +64,31 @@
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr class="danger">
-						<th>번호</th>
-						<th>제목</th>
-						<th>글쓴이</th>
-						<th>조회수</th>
-						<th>등록일</th>
+						<th>EmpNo</th>
+						<th>Ename</th>
+						<th>Job</th>
+						<th>MGR</th>
+						<th>HireDate</th>
+						<th>Sal</th>
+						<th>DeptNo</th>
 					</tr>
 				</thead>
-				<c:forEach items="${boardList }" var="boardList">
+				<c:forEach items="${empList }" var="empList">
 					<tbody>
 						<tr>
-							<td>${boardList.idx }</td>
-							<td class="success"><a
-								href="/michiget/content?idx=${boardList.idx }">${boardList.title}</a></td>
-							<td>${boardList.writer }</td>
-							<td>${boardList.count }</td>
-							<td>${boardList.regdate }</td>
+							<td>${empList.empno }</td>
+							<td>${empList.ename }</td>
+							<td>${empList.job }</td>
+							<td>${empList.mgr }</td>
+							<td>${empList.hiredate }</td>
+							<td>${empList.sal }</td>
+							<td>${empList.deptno }</td>
 						</tr>
 					</tbody>
 				</c:forEach>
 			</table>
 
-			<div class="btn-group">
-				<form action="/michiget/write">
-					<ul>
-						<li><button class="btn btn-primary" type="submit" value="글쓰기">글쓰기</button></li>
-					</ul>
-				</form>
-			</div>
+
 		</div>
 		<!-- container end -->
 		<!-- footer -->

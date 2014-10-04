@@ -53,9 +53,9 @@
 			<ul class="nav nav-pills nav-justified navbar-static-top">
 				<li class="active"><a href="/michiget/list">회원리스트</a></li>
 				<li><a href="/michiget/board">게시글리스트</a></li>
-				<li><a href="/michiget/list">직원리스트</a></li>
-				<li><a href="/michiget/list">부서리스트</a></li>
-				<li><a href="/michiget/list">급여등급리스트</a></li>
+				<li><a href="/michiget/emp">직원리스트</a></li>
+				<li><a href="/michiget/dept">부서리스트</a></li>
+				<li><a href="/michiget/salgrade">급여등급리스트</a></li>
 			</ul>
 		</div>
 		<!-- header end -->

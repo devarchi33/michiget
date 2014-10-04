@@ -6,6 +6,9 @@
 	<definition name="write" 	template="/WEB-INF/views/board/boardWrite.jsp" />
 	<definition name="board" 	template="/WEB-INF/views/board/board.jsp" />
 	<definition name="content" 	template="/WEB-INF/views/board/content.jsp" />
+	<definition name="emp" 	template="/WEB-INF/views/board/emp.jsp" />
+	<definition name="dept" 	template="/WEB-INF/views/board/dept.jsp" />
+	<definition name="salgrade" 	template="/WEB-INF/views/board/salgrade.jsp" />
 	<definition name="contentDelete" 	template="/WEB-INF/views/board/contentDelete.jsp" />
 	
 </tiles-definitions>

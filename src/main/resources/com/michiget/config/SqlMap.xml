@@ -9,6 +9,9 @@
 	<typeAlias alias="int" type="java.lang.Integer" />
 	<typeAlias alias="userInfo" type="com.michiget.beans.UserInfo" />
 	<typeAlias alias="board" type="com.michiget.beans.Board" />
+	<typeAlias alias="emp" type="com.michiget.beans.Emp" />
+	<typeAlias alias="dept" type="com.michiget.beans.Dept" />
+	<typeAlias alias="salgrade" type="com.michiget.beans.Salgrade" />
 
 	<select id="getMemberList" resultClass="userInfo">
 		select * from MEMBER order by IDX desc
@@ -20,6 +23,18 @@
 	
 	<select id="getContent" resultClass="board" parameterClass="int">
 		select * from michiget.board2 where michiget.board2."idx" = #idx#
+	</select>
+
+	<select id="getEmpList" resultClass="emp">
+		select * from scott.emp
+	</select>
+
+	<select id="getDeptList" resultClass="dept">
+		select * from scott.dept
+	</select>
+	
+	<select id="getSalgradeList" resultClass="salgrade">
+		select * from scott.salgrade
 	</select>
 
 	<insert id="insertMember" parameterClass="userInfo"> 
