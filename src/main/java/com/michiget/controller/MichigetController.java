@@ -29,8 +29,10 @@ public interface MichigetController {
 
 	@RequestMapping("/logout")
 	public ModelAndView logout() throws Exception;
+	
+	@RequestMapping("/b_delete")
+	public ModelAndView boardListDelete() throws Exception;
 
-	// (value="/member", method=RequestMethod.GET)
 	@RequestMapping(value = "/member", method = RequestMethod.POST)
 	public ModelAndView memberInsertAction(@ModelAttribute UserInfo userInfo,
 			HttpServletRequest request) throws Exception;

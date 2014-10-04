@@ -11,11 +11,11 @@
 	<typeAlias alias="board" type="com.michiget.beans.Board" />
 
 	<select id="getMemberList" resultClass="userInfo">
-		select * from MEMBER order by IDX asc
+		select * from MEMBER order by IDX desc
 	</select>
 
 	<select id="getBoardList" resultClass="board">
-		select * from michiget.board2 order by michiget.board2."idx" asc
+		select * from michiget.board2 order by michiget.board2."idx" desc
 	</select>
 	
 	<select id="getContent" resultClass="board" parameterClass="int">

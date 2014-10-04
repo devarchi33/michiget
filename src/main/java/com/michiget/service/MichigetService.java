@@ -13,6 +13,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -56,6 +57,14 @@ public class MichigetService implements MichigetController {
 		logger.info("로그아웃 페이지");
 
 		return new ModelAndView("logout");
+	}
+	
+	@Override
+	public ModelAndView boardListDelete() throws Exception {
+		logger.info("게시글 삭제");
+		
+		
+		return new ModelAndView("redirect:board");
 	}
 
 	@Override
@@ -199,5 +208,4 @@ public class MichigetService implements MichigetController {
 		mav.addObject("nick", userInfo.getNick());
 		return mav;
 	}
-
 }

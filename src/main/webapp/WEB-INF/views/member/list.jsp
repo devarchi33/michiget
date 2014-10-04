@@ -5,6 +5,7 @@
 <!-- 리스트의 사이즈 조사를 위한 태그 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!-- 소수점처리 위한 태그 -->
+
 <%@ page import="com.michiget.beans.UserInfo"%>
 <%@ page session="true"%>
 <%
@@ -15,6 +16,7 @@
 	else
 		System.out.println("list.jsp : Session invalidated!!");
 %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -32,19 +34,32 @@
 </head>
 
 <body>
+	<!-- wrap -->
 	<div id="wrap">
+		<!-- header -->
 		<div id="header">
-			<p><%=loginId%>님으로 로그인 하셨습니다.
-			</p>
-			<ul class="nav nav-pills nav-justified">
-				<li class="active"><a href="#">Home</a></li>
+			<ul id="menu" class="breadcrumb">
+				<li><a href="/michiget/join">회원가입</a></li>
+				<li><a href="/michiget/logout">로그아웃</a></li>
+			</ul>
+
+			<div class="page-header">
+				<h1>
+					회원 리스트&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로 로그인 하셨습니다.
+					</small>
+				</h1>
+			</div>
+
+			<ul class="nav nav-pills nav-justified navbar-static-top">
+				<li class="active"><a href="/michiget/list">회원리스트</a></li>
 				<li><a href="/michiget/board">게시글리스트</a></li>
 				<li><a href="/michiget/list">직원리스트</a></li>
 				<li><a href="/michiget/list">부서리스트</a></li>
 				<li><a href="/michiget/list">급여등급리스트</a></li>
 			</ul>
 		</div>
-
+		<!-- header end -->
+		<!-- container -->
 		<div id="container">
 			<table class="table table-bordered table-hover">
 				<thead>
@@ -72,7 +87,10 @@
 					</tbody>
 				</c:forEach>
 			</table>
-
+		</div>
+		<!-- container end -->
+		<!-- footer -->
+		<div id="footer">
 			<div id="page">
 				<ul class="pagination">
 					<c:if test="${page > 0}">
@@ -93,13 +111,10 @@
 					</c:if>
 				</ul>
 			</div>
-
-			<ul id="menu">
-				<li><a href="/michiget/join">회원가입</a></li>
-				<li><a href="/michiget/logout">로그아웃</a></li>
-			</ul>
+			<address>Copyright ⓒ 2014 Iruentech All rights reserved</address>
 		</div>
-		<div id="footer"></div>
+		<!-- footer end -->
 	</div>
+	<!-- wrap -->
 </body>
 </html>

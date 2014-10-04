@@ -22,6 +22,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Spring-BoardList</title>
+
 <!-- 합쳐지고 최소화된 최신 CSS -->
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/css/bootstrap.min.css">
@@ -30,24 +31,34 @@
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
 <script
 	src="//netdna.bootstrapcdn.com/bootstrap/3.0.0-wip/js/bootstrap.min.js"></script>
-<!-- <style type="text/css">
-
-</style>  -->
 </head>
+
 <body>
+	<!-- wrap -->
 	<div id="wrap">
+		<!-- header -->
 		<div id="header">
-			<p><%=loginId%>님으로 로그인 하셨습니다.
-			</p>
-			<ul class="nav nav-pills nav-justified">
-				<li class="active"><a href="#">Home</a></li>
+			<ul id="menu" class="breadcrumb">
+				<li><a href="/michiget/join">회원가입</a></li>
+				<li><a href="/michiget/logout">로그아웃</a></li>
+			</ul>
+
+			<div class="page-header">
+				<h1>
+					게시글 리스트&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로 로그인 하셨습니다.</small>
+				</h1>
+			</div>
+
+			<ul class="nav nav-pills nav-justified navbar-static-top">
 				<li><a href="/michiget/list">회원리스트</a></li>
+				<li class="active"><a href="/michiget/board">게시글리스트</a></li>
 				<li><a href="/michiget/list">직원리스트</a></li>
 				<li><a href="/michiget/list">부서리스트</a></li>
 				<li><a href="/michiget/list">급여등급리스트</a></li>
 			</ul>
 		</div>
-
+		<!-- header end -->
+		<!-- container -->
 		<div id="container">
 			<table class="table table-bordered table-hover">
 				<thead>
@@ -74,6 +85,17 @@
 				</c:forEach>
 			</table>
 
+			<div class="btn-group">
+				<form action="/michiget/write" method="get">
+					<ul>
+						<li><button class="btn btn-primary" type="submit" value="글쓰기">글쓰기</button></li>
+					</ul>
+				</form>
+			</div>
+		</div>
+		<!-- container end -->
+		<!-- footer -->
+		<div id="footer">
 			<div id="page">
 				<ul class="pagination">
 					<c:if test="${page > 0}">
@@ -92,13 +114,10 @@
 					</c:if>
 				</ul>
 			</div>
-
-			<ul id="menu">
-				<li><a href="/michiget/write">글쓰기</a></li>
-				<li><a href="/michiget/logout">로그아웃</a></li>
-			</ul>
+			<address>Copyright ⓒ 2014 Iruentech All rights reserved</address>
 		</div>
-		<div id="footer"></div>
+		<!-- footer end -->
 	</div>
+	<!-- wrap end -->
 </body>
 </html>
