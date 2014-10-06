@@ -3,15 +3,7 @@
 <%@ page import="com.michiget.beans.UserInfo"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="true"%>
-<%
-	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-	//String loginId = session.getAttribute("loginId").toString();
-	//System.out.println(loginId);
-	if (userInfo != null)
-		System.out.println("home.jsp : Session ok!!");
-	else
-		System.out.println("home.jsp : Session invalidated!!");
-%>
+
 <html>
 <head>
 <title>Spring-Board</title>
@@ -40,10 +32,20 @@
 		</c:if>
 		<c:choose>
 			<c:when test="${check == 0 }">
+				<%
+					UserInfo userInfo = (UserInfo) session
+									.getAttribute("userInfo");
+							String loginId = session.getAttribute("loginId").toString();
+							System.out.println(loginId);
+							if (userInfo != null && loginId != null)
+								System.out.println("home.jsp : Session ok!!");
+							else
+								System.out.println("home.jsp : Session invalidated!!");
+				%>
 				<div class="jumbotron">
 					<div class="container">
 						<h1>
-							Hello,"<%=userInfo.getId()%>"
+							Hello,"<%=loginId%>"
 						</h1>
 						<p>Login Success!!</p>
 						<form action="/michiget/logout" method="get"
@@ -74,7 +76,7 @@
 										<div class="input-group">
 											<span class="input-group-addon">@</span> <input
 												class="form-control" placeholder="Username" type="text"
-												name="id" size="20">
+												name="loginId" size="20">
 										</div>
 									</th>
 								</tr>

@@ -229,7 +229,7 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView loginAction(@RequestParam(value = "id") String id,
+	public ModelAndView loginAction(@RequestParam(value = "loginId") String id,
 			@RequestParam(value = "pass") String pass,
 			HttpServletRequest request) throws Exception {
 		request.setCharacterEncoding("UTF-8");
