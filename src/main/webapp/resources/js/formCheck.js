@@ -1,10 +1,10 @@
 function formCheck() {
-	var id = document.forms[0].id;
+	var id = document.forms[0].loginId;
 	var pass = document.forms[0].pass;
 
 	if (id.value == null || id.value == "") {
 		alert('Please enter a username');
-		document.forms[0].id.focus();
+		document.forms[0].loginId.focus();
 		return false;
 	}
 
