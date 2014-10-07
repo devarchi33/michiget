@@ -4,7 +4,8 @@
 <%@ page session="true"%>
 <%
 	UserInfo userInfo = (UserInfo) session.getAttribute("userInfo");
-	if (userInfo != null)
+	String loginId = userInfo.getId();
+	if (userInfo != null && loginId != null)
 		System.out.println("home.jsp : Session ok!! now Board-write");
 	else
 		System.out.println("home.jsp : Session invalidated!!");
@@ -41,45 +42,68 @@
 			document.forms[0].writer.focus();
 			return false;
 		} /*else if (writer.match(/^(\w+)@(\w+)[.](\w+)$/ig) == null) {
-										alert('이메일 형식으로 입력하세요');
-										document.forms[0].writer.focus();
-										return false;
-									}*/
+																			alert('이메일 형식으로 입력하세요');
+																			document.forms[0].writer.focus();
+																			return false;
+																		}*/
 
 	} // function end
 </script>
 </head>
 <body>
-	<div>
-		<%=userInfo.getId()%>님이 로그인 하셨습니다.
+	<!-- wrap -->
+	<div id="wrap">
+		<!-- header -->
+		<div id="header">
+			<ul id="menu" class="breadcrumb">
+				<li><a href="/michiget/board">목록보기</a></li>
+				<li><a href="/michiget/logout">로그아웃</a></li>
+			</ul>
+
+			<div class="page-header">
+				<h1>
+					글쓰기&nbsp;&nbsp;<small>현재 "<%=loginId%>"님으로 로그인 하셨습니다.
+					</small>
+				</h1>
+			</div>
+		</div>
+		<!-- headr end -->
+		<!-- container -->
+		<div id="container">
+			<form action="/michiget/board" name="boardWrite" method="POST"
+				onsubmit="return formCheck();">
+				<div class="row">
+					<div class="form-froup col-lg-2">
+						<label for="제목">제목</label> <input type="text" class="form-control"
+							placeholder="title" name="title">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-froup col-lg-2">
+						<label for="작성자">작성자</label> <input type="text"
+							class="form-control" placeholder="writer" name="writer">
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-froup col-lg-2">
+						<label for="내용">내용</label>
+						<textarea name="content" class="form-control"
+							placeholder="content" rows="10"></textarea>
+					</div>
+				</div>
+				<div class="row">
+					<div class="form-group col-lg-2">
+						<button type="submit" class="btn btn-primary">제출</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!-- container end-->
+		<!-- footer -->
+		<div id="footer"></div>
+		<!-- footer end -->
 	</div>
-	<form action="/michiget/board" name="boardWrite" method="POST"
-		onsubmit="return formCheck();">
-		<div class="row">
-			<div class="form-froup col-lg-2">
-				<label for="제목">제목</label> <input type="text" class="form-control"
-					placeholder="title" name="title">
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-froup col-lg-2">
-				<label for="작성자">작성자</label> <input type="text" class="form-control"
-					placeholder="writer" name="writer">
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-froup col-lg-2">
-				<label for="내용">내용</label>
-				<textarea name="content" class="form-control" placeholder="content"
-					rows="10"></textarea>
-			</div>
-		</div>
-		<div class="row">
-			<div class="form-group col-lg-2">
-				<button type="submit" class="btn btn-primary">제출</button>
-			</div>
-		</div>
-	</form>
+	<!-- wrap end -->
 </body>
 </html>
 

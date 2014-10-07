@@ -1,2 +1,10 @@
 @CHARSET "UTF-8";
 
+#container {
+	position: relative;
+	left: 40%;
+}
+
+button {
+	margin-top:10px;
+}
