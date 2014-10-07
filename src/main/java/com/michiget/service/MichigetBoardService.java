@@ -6,65 +6,39 @@ import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.michiget.beans.Board;
 import com.michiget.beans.Dept;
 import com.michiget.beans.Emp;
 import com.michiget.beans.Salgrade;
-import com.michiget.beans.UserInfo;
-import com.michiget.controller.MichigetController;
+import com.michiget.controller.MichigetBoardController;
 import com.michiget.model.MichigetDao;
 
 @Service
-public class MichigetService implements MichigetController {
-
+public class MichigetBoardService implements MichigetBoardController {
 	@Autowired
 	private MichigetDao michigetDao;
 
 	private static final Logger logger = LoggerFactory
-			.getLogger(MichigetService.class);
-
-	@Override
-	public ModelAndView home() throws Exception {
-		logger.info("home ë¡œê·¸");
-
-		return new ModelAndView("home");
-	}
-
-	@Override
-	public ModelAndView joinAction() throws Exception {
-		logger.info("íšŒì›ê°€ì… í˜ì´ì§€");
-
-		return new ModelAndView("join");
-	}
+			.getLogger(MichigetBoardService.class);
 
 	@Override
 	public ModelAndView writeAction() throws Exception {
-		logger.info("ê¸€ì“°ê¸° í˜ì´ì§€");
+		logger.info("±Û¾²±â ÆäÀÌÁö");
 
 		return new ModelAndView("write");
 	}
 
 	@Override
-	public ModelAndView logout() throws Exception {
-		logger.info("ë¡œê·¸ì•„ì›ƒ í˜ì´ì§€");
-
-		return new ModelAndView("logout");
-	}
-
-	@Override
 	public ModelAndView contentDeleteAction(HttpServletRequest request)
 			throws Exception {
-		logger.info("ê²Œì‹œê¸€ ì‚­ì œ");
+		logger.info("°Ô½Ã±Û »èÁ¦");
 
 		int idx = 0;
 
@@ -80,24 +54,9 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView memberInsertAction(@ModelAttribute UserInfo userInfo,
-			HttpServletRequest request) throws Exception {
-		logger.info("íšŒì›ê°€ì…DBì ‘ì† í˜ì´ì§€");
-		request.setCharacterEncoding("UTF-8");
-
-		System.out.println("MichigetService : " + userInfo.getId());
-		System.out.println("MichigetService : " + userInfo.getNick());
-
-		userInfo.setRegIp(request.getRemoteAddr());
-		michigetDao.insertMember(userInfo);
-
-		return new ModelAndView("redirect:");
-	}
-
-	@Override
 	public ModelAndView boardInsertAction(Board board,
 			HttpServletRequest request) throws Exception {
-		logger.info("ê²Œì‹œíŒ ê¸€ì“°ê¸° í˜ì´ì§€");
+		logger.info("°Ô½ÃÆÇ ±Û¾²±â ÆäÀÌÁö");
 		request.setCharacterEncoding("UTF-8");
 
 		System.out.println("MichigetService : " + board.getTitle());
@@ -115,27 +74,9 @@ public class MichigetService implements MichigetController {
 	}
 
 	@Override
-	public ModelAndView listAction(HttpServletRequest request) throws Exception {
-		logger.info("íšŒì›ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ");
-
-		int page = 0;
-
-		if (request.getParameter("page") != null) {
-			page = Integer.parseInt(request.getParameter("page"));
-		}
-
-		ArrayList<UserInfo> userList = michigetDao.getMemberList(page);
-		ModelAndView mav = new ModelAndView("list");
-		mav.addObject("userList", userList);
-		mav.addObject("page", page);
-
-		return mav;
-	}
-
-	@Override
 	public ModelAndView boardAction(HttpServletRequest request)
 			throws Exception {
-		logger.info("ê²Œì‹œê¸€ ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ");
+		logger.info("°Ô½Ã±Û ¸®½ºÆ® Á¶È¸");
 
 		int page = 0;
 
@@ -153,7 +94,7 @@ public class MichigetService implements MichigetController {
 
 	@Override
 	public ModelAndView empAction(HttpServletRequest request) throws Exception {
-		logger.info("emp ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ");
+		logger.info("emp ¸®½ºÆ® Á¶È¸");
 
 		int page = 0;
 
@@ -171,7 +112,7 @@ public class MichigetService implements MichigetController {
 
 	@Override
 	public ModelAndView deptAction(HttpServletRequest request) throws Exception {
-		logger.info("dept ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ");
+		logger.info("dept ¸®½ºÆ® Á¶È¸");
 
 		int page = 0;
 
@@ -190,7 +131,7 @@ public class MichigetService implements MichigetController {
 	@Override
 	public ModelAndView salgradeAction(HttpServletRequest request)
 			throws Exception {
-		logger.info("salgrade ë¦¬ìŠ¤íŠ¸ ì¡°íšŒ");
+		logger.info("salgrade ¸®½ºÆ® Á¶È¸");
 
 		int page = 0;
 
@@ -209,7 +150,7 @@ public class MichigetService implements MichigetController {
 	@Override
 	public ModelAndView contentAction(HttpServletRequest request)
 			throws Exception {
-		logger.info("ê²Œì‹œê¸€ ì„ íƒ ì¡°íšŒ");
+		logger.info("°Ô½Ã±Û ¼±ÅÃ Á¶È¸");
 
 		int idx = 0;
 
@@ -227,53 +168,4 @@ public class MichigetService implements MichigetController {
 
 		return mav;
 	}
-
-	@Override
-	public ModelAndView loginAction(@RequestParam(value = "loginId") String id,
-			@RequestParam(value = "pass") String pass,
-			HttpServletRequest request) throws Exception {
-		request.setCharacterEncoding("UTF-8");
-
-		int check_return = 0;
-		System.out.println("MichigetService.java --- id : " + id);
-		System.out.println("MichigetService.java --- pass : " + pass);
-
-		UserInfo userInfo = michigetDao.getLoginId(id);
-		String loginId = userInfo.getId();
-		String loginPass = userInfo.getPass();
-
-		HttpSession session = request.getSession();
-		session.setAttribute("userInfo", userInfo);
-		session.setAttribute("loginId", loginId);
-
-		logger.debug("db Id = " + loginId);
-		logger.debug("db Pass = " + loginPass);
-
-		logger.debug("ì…ë ¥í•œ Id = " + id);
-		logger.debug("ì…ë ¥í•œ Pass = " + pass);
-
-		// logger.debug("userInfo = " + userInfo);
-		if (loginId != null || loginId != "") {
-			if (!(userInfo.getPass().equals(pass))) {
-
-				ModelAndView mav = new ModelAndView("home");
-				check_return = 2;
-				mav.addObject("check", check_return);
-
-				return mav;
-			}
-		} /*
-		 * else if (loginPass != null || loginPass != "") { if (userInfo.getId()
-		 * == null) { ModelAndView mav = new ModelAndView("home"); check_return
-		 * = 1; mav.addObject("check", check_return); return mav; } }
-		 */
-
-		logger.debug("db Name = " + userInfo.getNick());
-		ModelAndView mav = new ModelAndView("home");
-		check_return = 0;
-		mav.addObject("check", check_return);
-		mav.addObject("nick", userInfo.getNick());
-		return mav;
-	}
-
 }
