@@ -13,29 +13,17 @@
 	<typeAlias alias="dept" type="com.michiget.beans.Dept" />
 	<typeAlias alias="salgrade" type="com.michiget.beans.Salgrade" />
 
-	<select id="getMemberList" resultClass="userInfo">
-		select * from MEMBER order by IDX desc
-	</select>
+	<select id="getMemberList" resultClass="userInfo">select * from MEMBER order by IDX desc</select>
 
-	<select id="getBoardList" resultClass="board">
-		select * from michiget.board2 order by michiget.board2."idx" desc
-	</select>
+	<select id="getBoardList" resultClass="board">select * from scott.board2 order by scott.board2."idx" desc</select>
 	
-	<select id="getContent" resultClass="board" parameterClass="int">
-		select * from michiget.board2 where michiget.board2."idx" = #idx#
-	</select>
+	<select id="getContent" resultClass="board" parameterClass="int">select * from scott.board2 where scott.board2."idx" = #idx#</select>
 
-	<select id="getEmpList" resultClass="emp">
-		select * from scott.emp
-	</select>
+	<select id="getEmpList" resultClass="emp">select * from emp</select>
 
-	<select id="getDeptList" resultClass="dept">
-		select * from scott.dept
-	</select>
+	<select id="getDeptList" resultClass="dept">select * from dept</select>
 	
-	<select id="getSalgradeList" resultClass="salgrade">
-		select * from scott.salgrade
-	</select>
+	<select id="getSalgradeList" resultClass="salgrade">select * from salgrade</select>
 
 	<insert id="insertMember" parameterClass="userInfo"> 
 	<![CDATA[
@@ -48,20 +36,15 @@
 
 	<insert id="insertBoard" parameterClass="board"> 
 	<![CDATA[
-		INSERT INTO michiget.board2
-			 (michiget.board2."idx", michiget.board2."title", michiget.board2."writer", michiget.board2."regdate", michiget.board2."count", michiget.board2."content")
+		INSERT INTO scott.board2
 		 VALUES 
 			 (board_seq.nextval, #title#, #writer#, #regdate#, 1, #content#)
 	]]>
 	</insert>
 	
-	<delete id="contentDelete" parameterClass="int">
-		delete from michiget.board2 where michiget.board2."idx" = #idx#
-	</delete>
+	<delete id="contentDelete" parameterClass="int">delete from scott.board2 where scott.board2."idx" = #idx#</delete>
 
-	<select id="getLoginId" resultClass="userInfo" parameterClass="str">
-		select ID,PASS,NICK from MEMBER where ID = #id#
-	</select>
+	<select id="getLoginId" resultClass="userInfo" parameterClass="str">select ID,PASS,NICK from MEMBER where ID = #id#</select>
 	
 	
 
