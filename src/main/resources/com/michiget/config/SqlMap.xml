@@ -26,15 +26,15 @@
 	</select>
 
 	<select id="getEmpList" resultClass="emp">
-		select * from scott.emp
+		select * from emp
 	</select>
 
 	<select id="getDeptList" resultClass="dept">
-		select * from scott.dept
+		select * from dept
 	</select>
 	
 	<select id="getSalgradeList" resultClass="salgrade">
-		select * from scott.salgrade
+		select * from salgrade
 	</select>
 
 	<insert id="insertMember" parameterClass="userInfo"> 
